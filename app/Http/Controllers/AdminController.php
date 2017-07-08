@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Illuminate\Support\Facades\DB;
 use Illuminate\Http\Request;
 
 class AdminController extends Controller
@@ -18,16 +19,27 @@ class AdminController extends Controller
 
     public function users()
     {
-        return view('admin.pages.users');
+        $users = $this->getAllUsers();
+
+        //dd($users);
+
+        return view('admin.pages.users', compact('users'));
     }
 
     public function usersAll()
     {
-        return view('admin.pages.users');
+        $users = $this->getAllUsers();
+
+        return view('admin.pages.users', ['users' => $users]);
     }
 
     public function usersAdd()
     {
         return view('admin.pages.users-add');
+    }
+
+    protected function getAllUsers()
+    {
+        return DB::select('select * from users');
     }
 }
