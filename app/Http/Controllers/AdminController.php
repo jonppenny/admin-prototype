@@ -38,6 +38,12 @@ class AdminController extends Controller
         return view('admin.pages.users-add');
     }
 
+    /**
+     * Get a list of all the users and user info.
+     * TODO refactor into a mysql class?
+     *
+     * @return array Result of the mysql query
+     */
     protected function getAllUsers()
     {
         return DB::select('select * from users');
