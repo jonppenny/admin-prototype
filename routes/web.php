@@ -23,6 +23,7 @@ Route::get('/admin', 'AdminController@index');
 Route::get('/admin/users', 'AdminController@users');
 Route::get('/admin/users/all', 'AdminController@usersAll');
 Route::get('/admin/users/add', 'AdminController@usersAdd');
+Route::get('/admin/users/edit/{id}', 'AdminController@usersEdit');
 
 Auth::routes();
 

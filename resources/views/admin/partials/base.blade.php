@@ -81,7 +81,7 @@
                     <li>
                         <a href="/admin/users">Users</a>
                         <ul>
-                            <li><a href="/admin/users">All Users</a></li>
+                            <li><a href="/admin/users/all">All Users</a></li>
                             <li><a href="/admin/users/add">Add Users</a></li>
                         </ul>
                     </li>

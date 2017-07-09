@@ -21,8 +21,6 @@ class AdminController extends Controller
     {
         $users = $this->getAllUsers();
 
-        //dd($users);
-
         return view('admin.pages.users', compact('users'));
     }
 
@@ -30,7 +28,7 @@ class AdminController extends Controller
     {
         $users = $this->getAllUsers();
 
-        return view('admin.pages.users', ['users' => $users]);
+        return view('admin.pages.users', compact('users'));
     }
 
     public function usersAdd()
@@ -39,12 +37,32 @@ class AdminController extends Controller
     }
 
     /**
+     * @param int $id
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     */
+    public function usersEdit(int $id)
+    {
+        $users = $this->getUserById($id);
+
+        return view('admin.pages.users-edit', compact('users'));
+    }
+
+    /**
+     * @param int $id
+     * @return array Result of the mysql query
+     */
+    protected function getUserById(int $id) : array
+    {
+        return DB::select('select * from users where id = ' . $id);
+    }
+
+    /**
      * Get a list of all the users and user info.
      * TODO refactor into a mysql class?
      *
      * @return array Result of the mysql query
      */
-    protected function getAllUsers()
+    protected function getAllUsers() : array
     {
         return DB::select('select * from users');
     }
