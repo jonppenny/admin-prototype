@@ -2,7 +2,7 @@
 @section('content')
     <h1>Add Users</h1>
     <div>
-        <form class="" method="POST" action="/admin/users/add">
+        <form method="POST" action="/admin/users/add">
             {{ csrf_field() }}
 
             <div class="form-group{{ $errors->has('name') ? ' has-error' : '' }}">
@@ -38,8 +38,8 @@
 
                 @if ($errors->has('password'))
                     <span class="help-block">
-                                        <strong>{{ $errors->first('password') }}</strong>
-                                    </span>
+                        <strong>{{ $errors->first('password') }}</strong>
+                    </span>
                 @endif
             </div>
 
@@ -48,6 +48,17 @@
 
                 <input id="password-confirm" type="password" class="form-control" name="password_confirmation"
                        required>
+            </div>
+
+            <div class="form-group">
+                <label for="role" class="control-label">User role</label>
+
+                <select name="role" id="role" class="form-control" required>
+                    <option>Please Select</option>
+                    <option value="admin">Admin</option>
+                    <option value="manager">Manager</option>
+                    <option value="user">User</option>
+                </select>
             </div>
 
             <div class="form-group">

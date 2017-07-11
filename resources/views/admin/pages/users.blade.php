@@ -1,6 +1,6 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Dashboard</h1>
+    <h1>Users</h1>
     @if ($users)
         <table class="table table-striped">
             <thead class="thead-default">
@@ -16,8 +16,8 @@
                 <tr>
                     <td>{{ $user->name }}</td>
                     <td>{{ $user->email }}</td>
-                    <td>Admin</td>
-                    <td><a href="{{ $user->id }}">Edit</a></td>
+                    <td>{{ $user->role }}</td>
+                    <td><a href="/admin/users/edit/{{ $user->id }}">Edit</a></td>
                 </tr>
             @endforeach
             </tbody>

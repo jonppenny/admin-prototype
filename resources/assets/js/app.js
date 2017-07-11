@@ -7,6 +7,10 @@
 
 require('./bootstrap');
 
+require('./lib/jquery.bxslider.min');
+
+require('./page-bxslider-settings');
+
 window.Vue = require('vue');
 
 /**

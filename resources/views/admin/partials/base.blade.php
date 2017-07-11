@@ -75,13 +75,20 @@
     </nav>
     <div class="container">
         <div class="row">
-            <div class="col-md-2">
+            <div class="col-md-3">
                 <ul>
                     <li><a href="/admin">Dashboard</a></li>
                     <li>
+                        <a href="/admin/presentations">Presentations</a>
+                        <ul>
+                            <li><a href="/admin/presentations/all">All Presentations</a></li>
+                            <li><a href="/admin/presentations/add">Add Presentation</a></li>
+                        </ul>
+                    </li>
+                    <li>
                         <a href="/admin/users">Users</a>
                         <ul>
-                            <li><a href="/admin/users">All Users</a></li>
+                            <li><a href="/admin/users/all">All Users</a></li>
                             <li><a href="/admin/users/add">Add Users</a></li>
                         </ul>
                     </li>
@@ -90,7 +97,7 @@
                     </li>
                 </ul>
             </div>
-            <div class="col-md-10">
+            <div class="col-md-9">
                 @yield('content')
             </div>
         </div>

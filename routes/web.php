@@ -11,19 +11,24 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
-
 Auth::routes();
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/', 'HomeController@index')->name('home');
 
-Route::get('/admin', 'AdminController@index');
-Route::get('/admin/users', 'AdminController@users');
-Route::get('/admin/users/all', 'AdminController@usersAll');
-Route::get('/admin/users/add', 'AdminController@usersAdd');
+Route::get('/admin', 'DashboardController@index');
 
-Auth::routes();
+Route::get('/admin/presentations', 'PresentationController@index');
+Route::get('/admin/presentations/all', 'PresentationController@index');
+Route::get('/admin/presentations/add', 'PresentationController@create');
+Route::post('/admin/presentations/add', 'PresentationController@store');
+Route::get('/admin/presentations/edit/{id}', 'PresentationController@edit');
+Route::patch('/admin/presentations/edit/{id}', 'PresentationController@update');
+Route::delete('/admin/presentations/delete/{id}', 'PresentationController@destroy');
 
-Route::get('/home', 'HomeController@index')->name('home');
+Route::get('/admin/users', 'UserController@index');
+Route::get('/admin/users/all', 'UserController@index');
+Route::get('/admin/users/add', 'UserController@create');
+Route::post('/admin/users/add', 'UserController@store');
+Route::get('/admin/users/edit/{id}', 'UserController@edit');
+Route::patch('/admin/users/edit/{id}', 'UserController@update');
+Route::delete('/admin/users/delete/{id}', 'UserController@destroy');
