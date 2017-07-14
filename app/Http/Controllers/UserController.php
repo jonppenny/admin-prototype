@@ -44,13 +44,11 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //dd($request->all());
-
         User::create([
             'name' => $request->name,
             'email' => $request->email,
             'password' => bcrypt($request->password),
-            'role' => $request->role
+            'role' => $request->role,
         ]);
 
         return redirect()->to('/admin/users/all');
@@ -73,34 +71,38 @@ class UserController extends Controller
      */
     public function edit(int $id)
     {
-        $users = User::getAllUsers();
+        $users = User::find($id);
 
-        return view('admin.pages.users-edit', compact('users'));
+        $id = $users->id;
+        $name = $users->name;
+        $email = $users->email;
+
+        return view('admin.pages.users-edit', compact('id', 'name', 'email'));
     }
 
     /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
+     * @param Request $request
+     * @param int $id
+     * @return \Illuminate\Http\RedirectResponse
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
-        dd($request->all());
+        $user = User::find($id);
+
+        $user->email = $request->email;
+        $user->save();
 
         return redirect()->to('/admin/users/all');
     }
 
     /**
-     * @param Request $request
+     * @param int $id
      * @return \Illuminate\Http\RedirectResponse
      */
-    public function destroy(Request $request)
+    public function destroy(int $id)
     {
-        if ($request->_method === 'DELETE') {
-            User::deleteUserById($request->id);
-        }
+        $user = User::find($id);
+        $user->delete();
 
         return redirect()->to('/admin/users');
     }
