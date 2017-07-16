@@ -39,16 +39,16 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
     {
         User::create([
-            'name' => $request->name,
-            'email' => $request->email,
+            'name'     => $request->name,
+            'email'    => $request->email,
             'password' => bcrypt($request->password),
-            'role' => $request->role,
+            'role'     => $request->role,
         ]);
 
         return redirect()->to('/admin/users/all');
@@ -57,7 +57,7 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int  $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function show($id)
@@ -73,8 +73,8 @@ class UserController extends Controller
     {
         $users = User::find($id);
 
-        $id = $users->id;
-        $name = $users->name;
+        $id    = $users->id;
+        $name  = $users->name;
         $email = $users->email;
 
         return view('admin.pages.users-edit', compact('id', 'name', 'email'));

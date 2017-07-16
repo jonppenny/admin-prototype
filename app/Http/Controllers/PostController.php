@@ -3,10 +3,10 @@
 namespace App\Http\Controllers;
 
 use Illuminate\Http\Request;
-use App\Presentation;
+use App\Post;
 use Intervention\Image\ImageManagerStatic as Image;
 
-class PresentationController extends Controller
+class PostController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -15,9 +15,9 @@ class PresentationController extends Controller
      */
     public function index()
     {
-        $presentations = Presentation::all();
+        $posts = Post::all();
 
-        return view('admin.pages.presentations', compact('presentations'));
+        return view('admin.pages.posts', compact('posts'));
     }
 
     /**
@@ -27,7 +27,7 @@ class PresentationController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.presentations-add');
+        return view('admin.pages.posts-add');
     }
 
     /**
@@ -38,28 +38,19 @@ class PresentationController extends Controller
      */
     public function store(Request $request)
     {
-        $meta = [
-            'section1' => $request->section1,
-            'section2' => $request->section2,
-            'section3' => $request->section3,
-            'section4' => $request->section4,
-            'section5' => $request->section5,
-        ];
-
         $file       = $request->preview_image;
         $image_name = $file->getClientOriginalName();
         $image_path = $file->getRealPath();
 
-        Presentation::saveImage($image_name, $image_path);
+        Post::saveImage($image_name, $image_path);
 
-        Presentation::create([
+        Post::create([
             'title'         => $request->title,
-            'meta'          => json_encode($meta),
             'preview_image' => 'thumbnail-' . $image_name,
             'full_image'    => $image_name,
         ]);
 
-        return redirect()->to('/admin/presentations/all');
+        return redirect()->to('/admin/posts/all');
     }
 
     /**
@@ -79,21 +70,28 @@ class PresentationController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function edit($id)
+    public function edit(int $id)
     {
-        //
+        $post  = Post::find($id);
+        $id    = $post->id;
+        $title = $post->title;
+
+        return view('admin.pages.posts-edit', compact('id', 'title'));
     }
 
     /**
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param  int $id
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, $id)
     {
-        //
+        $post        = Post::find($id);
+        $post->title = $request->title;
+
+        $post->save();
     }
 
     /**

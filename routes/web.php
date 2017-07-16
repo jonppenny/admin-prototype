@@ -17,13 +17,13 @@ Route::get('/', 'HomeController@index')->name('home');
 
 Route::get('/admin', 'DashboardController@index');
 
-Route::get('/admin/presentations', 'PresentationController@index');
-Route::get('/admin/presentations/all', 'PresentationController@index');
-Route::get('/admin/presentations/add', 'PresentationController@create');
-Route::post('/admin/presentations/save', 'PresentationController@store');
-Route::get('/admin/presentations/{id}/edit', 'PresentationController@edit');
-Route::patch('/admin/presentations/{id}/update', 'PresentationController@update');
-Route::delete('/admin/presentations/{id}/delete', 'PresentationController@destroy');
+Route::get('/admin/posts', 'PostController@index');
+Route::get('/admin/posts/all', 'PostController@index');
+Route::get('/admin/posts/add', 'PostController@create');
+Route::post('/admin/posts/save', 'PostController@store');
+Route::get('/admin/posts/{id}/edit', 'PostController@edit');
+Route::patch('/admin/posts/{id}/update', 'PostController@update');
+Route::delete('/admin/posts/{id}/delete', 'PostController@destroy');
 
 Route::get('/admin/users', 'UserController@index');
 Route::get('/admin/users/all', 'UserController@index');

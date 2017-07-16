@@ -1,13 +1,14 @@
 @extends('admin.partials.base')
 @section('content')
     <h1>Add Presentation</h1>
-    <form method="POST" action="/admin/presentations/save" enctype="multipart/form-data">
+    <form method="POST" action="/admin/posts/{{ $id }}/update" enctype="multipart/form-data">
         {{ csrf_field() }}
+        {{ method_field('PATCH') }}
 
         <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
             <label for="title" class="control-label">Title</label>
 
-            <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required
+            <input id="title" type="text" class="form-control" name="title" value="{{ $title }}" required
                    autofocus>
 
             @if ($errors->has('title'))
@@ -51,6 +52,24 @@
         <div class="form-group">
             <button type="submit" class="btn btn-primary">
                 Add Presentation
+            </button>
+        </div>
+    </form>
+
+    <form class="" method="POST" action="/admin/presentations/{{ $user->id }}/delete">
+        {{ csrf_field() }}
+        {{ method_field('DELETE') }}
+        <input type="hidden" name="id" value="{{ $user->id }}">
+
+        <div class="form-group bg-danger" style="padding: 10px;">
+            <strong>
+                <small>WANING: Deleting the post removes all data from the database. This action cannot be undone.
+                </small>
+            </strong>
+            <br/>
+            <br/>
+            <button type="submit" class="btn btn-danger">
+                DELETE POST
             </button>
         </div>
     </form>

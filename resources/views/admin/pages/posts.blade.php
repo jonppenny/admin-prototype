@@ -1,7 +1,7 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Presentations</h1>
-    @if($presentations)
+    <h1>Posts</h1>
+    @if($posts)
         <table class="table table-striped">
             <thead class="thead-default">
             <tr>
@@ -11,18 +11,18 @@
             </tr>
             </thead>
             <tbody>
-            @foreach($presentations as $presentation)
+            @foreach($posts as $post)
                 <tr>
                     <td width="200">
-                        @if($presentation->preview_image)
-                            <img src="/uploads/{{ $presentation->preview_image }}" alt="{{ $presentation->title }}"/>
+                        @if($post->preview_image)
+                            <img src="/uploads/{{ $post->preview_image }}" alt="{{ $post->title }}"/>
                         @else
-                            <img src="/images/default.jpg" alt="{{ $presentation->title }}"/>
+                            <img src="/images/default.jpg" alt="{{ $post->title }}"/>
                         @endif
                     </td>
-                    <td>{{ $presentation->title }}</td>
+                    <td>{{ $post->title }}</td>
                     <td>
-                        <a href="/admin/presentations/edit/{{ $presentation->id }}">Edit</a>
+                        <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
                     </td>
                 </tr>
             @endforeach

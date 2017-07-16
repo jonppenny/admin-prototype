@@ -8350,33 +8350,3 @@ button.close {
   }
 }
 
-body {
-  font-family: 'Open Sans', sans-serif;
-  font-weight: lighter;
-  color: #111;
-  background: #fff;
-}
-
-h1,
-h2,
-h3,
-h4,
-h5,
-h6 {
-  font-weight: inherit;
-}
-
-a {
-  color: #111;
-  text-decoration: underline;
-}
-
-.clear {
-  overflow: hidden;
-}
-
-.social a {
-  margin-right: 3px;
-  display: inline-block;
-}
-
