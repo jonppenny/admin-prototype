@@ -20,10 +20,26 @@ body {
   margin-right: -21px;
   margin-bottom: 20px;
   margin-left: -20px;
-  .active {
-    a,
-    a:hover,
-    a:focus {
+  ul {
+    padding: 0 10px;
+    display: none;
+    list-style-type: none;
+    a {
+      position: relative;
+      display: block;
+      padding: 5px 10px;
+    }
+    .active {
+      font-weight: bolder;
+    }
+  }
+  > .active {
+    ul {
+      display: block;
+    }
+    > a,
+    > a:hover,
+    > a:focus {
       color: #fff;
       background-color: #428bca;
     }

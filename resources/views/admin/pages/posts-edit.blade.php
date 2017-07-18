@@ -1,76 +1,70 @@
 @extends('admin.partials.base')
 @section('content')
     <h1>Add Presentation</h1>
-    <form method="POST" action="/admin/posts/{{ $id }}/update" enctype="multipart/form-data">
-        {{ csrf_field() }}
-        {{ method_field('PATCH') }}
+    <div class="row">
 
-        <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-            <label for="title" class="control-label">Title</label>
+        <form method="POST" action="/admin/posts/{{ $id }}/update" enctype="multipart/form-data">
+            {{ csrf_field() }}
+            {{ method_field('PATCH') }}
 
-            <input id="title" type="text" class="form-control" name="title" value="{{ $title }}" required
-                   autofocus>
+            <div class="col-md-8">
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title" class="control-label">Title</label>
 
-            @if ($errors->has('title'))
-                <span class="help-block">
+                    <input id="title" type="text" class="form-control" name="title" value="{{ $title }}" required
+                           autofocus>
+
+                    @if ($errors->has('title'))
+                        <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>
                 </span>
-            @endif
-        </div>
+                    @endif
+                </div>
 
-        <div class="form-group">
-            <label for="preview-image">File input</label>
-            <input type="file" name="preview_image" id="preview-image" class="preview-image">
-            <p class="help-block">Example block-level help text here.</p>
-        </div>
+                <div class="form-group{{ $errors->has('the_content') ? ' has-error' : '' }}">
+                    <label for="the_content" class="control-label">Content</label>
+                    <textarea name="the_content" id="the_content" class="form-control" rows="5">{{ $the_content }}</textarea>
+                </div>
+            </div>
 
-        <div class="form-group{{ $errors->has('section1') ? ' has-error' : '' }}">
-            <label for="section1" class="control-label">Section 1</label>
-            <textarea name="section1" id="section1" class="form-control" rows="3"></textarea>
-        </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="preview-image">File input</label>
+                    <input type="file" name="preview_image" id="preview-image" class="preview-image">
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>
 
-        <div class="form-group{{ $errors->has('section2') ? ' has-error' : '' }}">
-            <label for="section2" class="control-label">Section 2</label>
-            <textarea name="section2" id="section2" class="form-control" rows="3"></textarea>
-        </div>
+                <div class="form-group">
+                    <p>Created: {{ $created_at->format('D d F Y, H:i:s') }}<br/>
+                        Updated: {{ $updated_at->format('D d F Y, H:i:s') }}</p>
+                    <button type="submit" class="btn btn-primary">
+                        Update
+                    </button>
+                </div>
+            </div>
+        </form>
+    </div>
 
-        <div class="form-group{{ $errors->has('section3') ? ' has-error' : '' }}">
-            <label for="section3" class="control-label">Section 3</label>
-            <textarea name="section3" id="section3" class="form-control" rows="3"></textarea>
-        </div>
+    <div class="row">
+        <div class="col-md-12">
+            <form class="" method="POST" action="/admin/posts/{{ $id }}/delete">
+                {{ csrf_field() }}
+                {{ method_field('DELETE') }}
+                <input type="hidden" name="id" value="{{ $id }}">
 
-        <div class="form-group{{ $errors->has('section4') ? ' has-error' : '' }}">
-            <label for="section4" class="control-label">Section 4</label>
-            <textarea name="section4" id="section4" class="form-control" rows="3"></textarea>
+                <div class="form-group bg-danger" style="padding: 10px;">
+                    <strong>
+                        <small>WANING: Deleting the post removes all data from the database. This action cannot be
+                            undone.
+                        </small>
+                    </strong>
+                    <br/>
+                    <br/>
+                    <button type="submit" class="btn btn-danger">
+                        DELETE POST
+                    </button>
+                </div>
+            </form>
         </div>
-
-        <div class="form-group{{ $errors->has('section5') ? ' has-error' : '' }}">
-            <label for="section5" class="control-label">Section 5</label>
-            <textarea name="section5" id="section5" class="form-control" rows="3"></textarea>
-        </div>
-
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">
-                Add Presentation
-            </button>
-        </div>
-    </form>
-
-    <form class="" method="POST" action="/admin/presentations/{{ $user->id }}/delete">
-        {{ csrf_field() }}
-        {{ method_field('DELETE') }}
-        <input type="hidden" name="id" value="{{ $user->id }}">
-
-        <div class="form-group bg-danger" style="padding: 10px;">
-            <strong>
-                <small>WANING: Deleting the post removes all data from the database. This action cannot be undone.
-                </small>
-            </strong>
-            <br/>
-            <br/>
-            <button type="submit" class="btn btn-danger">
-                DELETE POST
-            </button>
-        </div>
-    </form>
+    </div>
 @endsection

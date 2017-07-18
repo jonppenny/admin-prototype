@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::all();
+        $posts = Post::paginate(1);
 
         return view('admin.pages.posts', compact('posts'));
     }
@@ -38,14 +38,20 @@ class PostController extends Controller
      */
     public function store(Request $request)
     {
-        $file       = $request->preview_image;
-        $image_name = $file->getClientOriginalName();
-        $image_path = $file->getRealPath();
+        $image_name = 'default.png';
 
-        Post::saveImage($image_name, $image_path);
+        if ($request->preview_image) {
+            $file       = $request->preview_image;
+            $image_name = $file->getClientOriginalName();
+            $image_path = $file->getRealPath();
+
+            Post::saveImage($image_name, $image_path);
+        }
 
         Post::create([
             'title'         => $request->title,
+            'the_content'   => $request->the_content,
+            'the_excerpt'   => '',
             'preview_image' => 'thumbnail-' . $image_name,
             'full_image'    => $image_name,
         ]);
@@ -72,11 +78,14 @@ class PostController extends Controller
      */
     public function edit(int $id)
     {
-        $post  = Post::find($id);
-        $id    = $post->id;
-        $title = $post->title;
+        $post        = Post::find($id);
+        $id          = $post->id;
+        $title       = $post->title;
+        $the_content = $post->the_content;
+        $created_at  = $post->created_at;
+        $updated_at  = $post->updated_at;
 
-        return view('admin.pages.posts-edit', compact('id', 'title'));
+        return view('admin.pages.posts-edit', compact('id', 'title', 'the_content', 'created_at', 'updated_at'));
     }
 
     /**
@@ -102,6 +111,9 @@ class PostController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $post = Post::find($id);
+        $post->delete();
+
+        return redirect()->to('/admin/posts');
     }
 }

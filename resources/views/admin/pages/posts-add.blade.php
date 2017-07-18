@@ -1,41 +1,43 @@
 @extends('admin.partials.base')
 @section('content')
     <h1>Add Presentation</h1>
-    <form method="POST" action="/admin/posts/save" enctype="multipart/form-data">
-        {{ csrf_field() }}
+    <div class="row">
+        <form method="POST" action="/admin/posts/save" enctype="multipart/form-data">
+            {{ csrf_field() }}
 
-        <div class="col-md-8">
-            <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
-                <label for="title" class="control-label">Title</label>
+            <div class="col-md-8">
+                <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
+                    <label for="title" class="control-label">Title</label>
 
-                <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required
-                       autofocus>
+                    <input id="title" type="text" class="form-control" name="title" value="{{ old('title') }}" required
+                           autofocus>
 
-                @if ($errors->has('title'))
-                    <span class="help-block">
+                    @if ($errors->has('title'))
+                        <span class="help-block">
                     <strong>{{ $errors->first('title') }}</strong>
                 </span>
-                @endif
+                    @endif
+                </div>
+
+                <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                    <label for="the_content" class="control-label">Content</label>
+                    <textarea name="the_content" id="the_content" class="form-control" rows="5"></textarea>
+                </div>
             </div>
 
-            <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
-                <label for="content" class="control-label">Content</label>
-                <textarea name="content" id="content" class="form-control" rows="5"></textarea>
-            </div>
-        </div>
+            <div class="col-md-4">
+                <div class="form-group">
+                    <label for="preview-image">File input</label>
+                    <input type="file" name="preview_image" id="preview-image" class="preview-image">
+                    <p class="help-block">Example block-level help text here.</p>
+                </div>
 
-        <div class="col-md-4">
-            <div class="form-group">
-                <label for="preview-image">File input</label>
-                <input type="file" name="preview_image" id="preview-image" class="preview-image">
-                <p class="help-block">Example block-level help text here.</p>
+                <div class="form-group">
+                    <button type="submit" class="btn btn-primary">
+                        Publish
+                    </button>
+                </div>
             </div>
-
-            <div class="form-group">
-                <button type="submit" class="btn btn-primary">
-                    Publish
-                </button>
-            </div>
-        </div>
-    </form>
+        </form>
+    </div>
 @endsection

@@ -1,4 +1,4 @@
-@extends('admin.partials.base')
+@extends('auth.partials.app')
 
 @section('content')
 <div class="container">

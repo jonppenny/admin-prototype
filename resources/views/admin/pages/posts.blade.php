@@ -5,28 +5,35 @@
         <table class="table table-striped">
             <thead class="thead-default">
             <tr>
-                <th>Preview</th>
+                <th>ID</th>
                 <th>Title</th>
-                <th>&nbsp;</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Manage</th>
             </tr>
             </thead>
             <tbody>
             @foreach($posts as $post)
                 <tr>
-                    <td width="200">
-                        @if($post->preview_image)
-                            <img src="/uploads/{{ $post->preview_image }}" alt="{{ $post->title }}"/>
-                        @else
-                            <img src="/images/default.jpg" alt="{{ $post->title }}"/>
-                        @endif
-                    </td>
+                    <td>{{ $post->id }}</td>
                     <td>{{ $post->title }}</td>
+                    <td>{{ $post->created_at->format('D d F Y, H:i:s') }}</td>
+                    <td>{{ $post->updated_at->format('D d F Y, H:i:s') }}</td>
                     <td>
-                        <a href="/admin/posts/{{ $post->id }}/edit">Edit</a>
+                        <a href="/admin/posts/{{ $post->id }}/edit" class="btn btn-primary">Edit</a>
+                        <form class="" method="POST" action="/admin/posts/{{ $post->id }}/delete" style="display: inline-block;">
+                            {{ csrf_field() }}
+                            {{ method_field('DELETE') }}
+                            <input type="hidden" name="id" value="{{ $post->id }}">
+                            <button type="submit" class="btn btn-danger">
+                                Delete
+                            </button>
+                        </form>
                     </td>
                 </tr>
             @endforeach
             </tbody>
         </table>
+        {{ $posts->links() }}
     @endif
 @endsection

@@ -76,22 +76,22 @@
     <div class="row">
         <div class="col-sm-3 col-md-2 sidebar">
             <ul class="nav nav-sidebar">
-                <li{{ request()->is('/admin') ? ' class="active"' : '' }}><a href="/admin">Dashboard</a></li>
-                <li>
+                <li class="{{ setActive('admin') }}"><a href="/admin">Dashboard</a></li>
+                <li class="{{ setActive('admin/posts*') }}">
                     <a href="/admin/posts">Posts</a>
                     <ul>
-                        <li><a href="/admin/posts/all">All Posts</a></li>
-                        <li><a href="/admin/posts/add">Add Post</a></li>
+                        <li class="{{ setActive('admin/posts') }}"><a href="/admin/posts">All Posts</a></li>
+                        <li class="{{ setActive('admin/posts/add') }}"><a href="/admin/posts/add">Add Post</a></li>
                     </ul>
                 </li>
-                <li>
+                <li class="{{ setActive('admin/users*') }}">
                     <a href="/admin/users">Users</a>
                     <ul>
-                        <li><a href="/admin/users/all">All Users</a></li>
-                        <li><a href="/admin/users/add">Add Users</a></li>
+                        <li class="{{ setActive('admin/users') }}"><a href="/admin/users">All Users</a></li>
+                        <li class="{{ setActive('admin/users/add') }}"><a href="/admin/users/add">Add Users</a></li>
                     </ul>
                 </li>
-                <li>
+                <li class="{{ setActive('admin/settings*') }}">
                     <a href="/admin/settings">Settings</a>
                 </li>
             </ul>

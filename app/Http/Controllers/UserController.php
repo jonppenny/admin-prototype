@@ -21,7 +21,7 @@ class UserController extends Controller
      */
     public function index()
     {
-        $users = User::getAllUsers();
+        $users = User::all();
 
         return view('admin.pages.users', compact('users'));
     }

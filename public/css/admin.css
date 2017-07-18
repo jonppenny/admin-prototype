@@ -8367,9 +8367,29 @@ body {
   margin-left: -20px;
 }
 
-.nav-sidebar .active a,
-.nav-sidebar .active a:hover,
-.nav-sidebar .active a:focus {
+.nav-sidebar ul {
+  padding: 0 10px;
+  display: none;
+  list-style-type: none;
+}
+
+.nav-sidebar ul a {
+  position: relative;
+  display: block;
+  padding: 5px 10px;
+}
+
+.nav-sidebar ul .active {
+  font-weight: bolder;
+}
+
+.nav-sidebar > .active ul {
+  display: block;
+}
+
+.nav-sidebar > .active > a,
+.nav-sidebar > .active > a:hover,
+.nav-sidebar > .active > a:focus {
   color: #fff;
   background-color: #428bca;
 }
