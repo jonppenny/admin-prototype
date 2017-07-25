@@ -7,7 +7,15 @@
 
 require('./bootstrap');
 
+require('./lib/jquery.bxslider.min');
+
+require('./page-bxslider-settings');
+
+require('./page-videocanvas');
+
 window.Vue = require('vue');
+
+// Vue.component('videoCanvas', require('./components/VideoCanvas.vue'));
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to
@@ -15,8 +23,8 @@ window.Vue = require('vue');
  * or customize the JavaScript scaffolding to fit your unique needs.
  */
 
-Vue.component('example', require('./components/Example.vue'));
-
-const app = new Vue({
-    el: '#app'
-});
+/*if (document.getElementById('myCanvasPlaceHolder')) {
+    const app = new Vue({
+        el: '#myCanvasPlaceHolder'
+    });
+}*/

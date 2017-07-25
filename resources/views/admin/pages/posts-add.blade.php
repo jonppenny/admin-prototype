@@ -19,6 +19,19 @@
                     @endif
                 </div>
 
+                <div class="form-group{{ $errors->has('slug') ? ' has-error' : '' }}">
+                    <label for="slug" class="control-label">Slug</label>
+
+                    <input id="slug" type="text" class="form-control" name="slug" value="{{ old('slug') }}" required
+                           autofocus>
+
+                    @if ($errors->has('slug'))
+                        <span class="help-block">
+                            <strong>{{ $errors->first('slug') }}</strong>
+                        </span>
+                    @endif
+                </div>
+
                 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                     <label for="the_content" class="control-label">Content</label>
                     <textarea name="the_content" id="the_content" class="form-control" rows="5"></textarea>

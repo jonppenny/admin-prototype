@@ -15,7 +15,7 @@ class PostController extends Controller
      */
     public function index()
     {
-        $posts = Post::paginate(1);
+        $posts = Post::paginate(20);
 
         return view('admin.pages.posts', compact('posts'));
     }
@@ -65,9 +65,11 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($id)
+    public function show($slug)
     {
-        //
+        $post = Post::where('slug', $slug)->first();
+
+        return view('site.pages.default', compact('post'));
     }
 
     /**
@@ -84,8 +86,12 @@ class PostController extends Controller
         $the_content = $post->the_content;
         $created_at  = $post->created_at;
         $updated_at  = $post->updated_at;
+        $slug        = $post->slug;
 
-        return view('admin.pages.posts-edit', compact('id', 'title', 'the_content', 'created_at', 'updated_at'));
+        return view(
+            'admin.pages.posts-edit',
+            compact('id', 'title', 'the_content', 'created_at', 'updated_at', 'slug')
+        );
     }
 
     /**
@@ -93,14 +99,16 @@ class PostController extends Controller
      *
      * @param  \Illuminate\Http\Request $request
      * @param  int $id
-     * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, $id)
+    public function update(Request $request, int $id)
     {
         $post        = Post::find($id);
         $post->title = $request->title;
+        $post->slug  = $request->slug;
 
         $post->save();
+
+        return redirect()->to('/admin/posts/all');
     }
 
     /**
@@ -109,7 +117,7 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function destroy($id)
+    public function destroy(int $id)
     {
         $post = Post::find($id);
         $post->delete();

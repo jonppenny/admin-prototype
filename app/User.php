@@ -1,13 +1,21 @@
 <?php
+/**
+ * User model
+ *
+ * @since  0.1.0
+ * @author Jon Penny <jon@completecontrolc.o.uk>
+ */
 
 namespace App;
 
 use Illuminate\Support\Facades\DB;
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+use Intervention\Image\ImageManagerStatic as Image;
 
 class User extends Authenticatable
 {
+
     use Notifiable;
 
     /**
@@ -16,7 +24,11 @@ class User extends Authenticatable
      * @var array
      */
     protected $fillable = [
-        'name', 'email', 'password', 'role'
+        'name',
+        'email',
+        'password',
+        'role',
+        'user_avatar',
     ];
 
     /**
@@ -25,38 +37,24 @@ class User extends Authenticatable
      * @var array
      */
     protected $hidden = [
-        'password', 'remember_token',
+        'password',
+        'remember_token',
     ];
 
-    /**
-     * Delete a user and all associated data from the database
-     *
-     * @param int $id The ID of the user to delete from the database
-     * @return int
-     */
-    public static function deleteUserById(int $id) : int
+    public static function saveImage($image_name, $image_path)
     {
-        return DB::delete('DELETE FROM users WHERE id = ' . $id);
+        $path = public_path() . '/uploads/';
+
+        $image = Image::make($image_path);
+
+        $image->resize(200, 200)->save($path . $image_name);
     }
 
     /**
-     * Get a user by ID
      *
-     * @param int $id The ID of the user to query
-     * @return array Result of the mysql query
      */
-    public static function getUserById(int $id): array
+    public static function getUserRole()
     {
-        return DB::select('SELECT * FROM users WHERE id = ' . $id);
-    }
-
-    /**
-     * Get a list of all the users and user info.
-     *
-     * @return array Result of the mysql query
-     */
-    public static function getAllUsers(): array
-    {
-        return DB::select('SELECT * FROM users');
+        return;
     }
 }

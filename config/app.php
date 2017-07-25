@@ -12,7 +12,7 @@ return [
     | any other location as required by the application or its packages.
     */
 
-    'name' => env('APP_NAME', 'Jon P Penny'),
+    'name' => env('APP_NAME', 'Style Guide Prototype'),
 
     /*
     |--------------------------------------------------------------------------
@@ -38,7 +38,7 @@ return [
     |
     */
 
-    'debug' => env('APP_DEBUG', true),
+    'debug' => env('APP_DEBUG', false),
 
     /*
     |--------------------------------------------------------------------------
@@ -134,6 +134,8 @@ return [
     | this array to grant expanded functionality to your applications.
     |
     */
+
+    'version' => '0.1.0',
 
     'providers' => [
 

@@ -18,6 +18,7 @@ class Post extends Model
         'the_content',
         'preview_image',
         'full_image',
+        'slug',
     ];
 
     public static function saveImage($image_name, $image_path)
