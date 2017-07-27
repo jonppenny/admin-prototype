@@ -45,12 +45,18 @@
         <div class="row">
             <div class="col-md-6">
                 <div class="social">
-                    <a href="http://twitter.com/jonppenny"><img width="32" height="32" src="/images/twitter.png"
-                                                                alt="Twitter Icon"/></a>
-                    <a href="http://uk.linkedin.com/in/jonppenny"><img width="32" height="32" src="/images/linkedin.png"
-                                                                       alt="LinkedIn Icon"/></a>
-                    <a href="https://github.com/jonppenny"><img width="32" height="32" src="/images/github.png"
-                                                                alt="Github Icon"/></a>
+                    <a href="mailto:jon@jonppenny.co.uk" title="Email">
+                        <img width="32" height="32" src="/images/iconmonstr-email-10.svg" alt="Email"/>
+                    </a>
+                    <a href="http://twitter.com/jonppenny" title="Twitter">
+                        <img width="32" height="32" src="/images/iconmonstr-twitter-4.svg" alt="Twitter"/>
+                    </a>
+                    <a href="http://uk.linkedin.com/in/jonppenny" title="LinkedIn">
+                        <img width="32" height="32" src="/images/iconmonstr-linkedin-4.svg" alt="LinkedIn"/>
+                    </a>
+                    <a href="https://github.com/jonppenny" title="Github">
+                        <img width="32" height="32" src="/images/iconmonstr-github-4.svg" alt="Github"/>
+                    </a>
                 </div>
             </div>
             <div class="col-md-6 text-right">

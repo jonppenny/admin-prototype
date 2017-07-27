@@ -8401,3 +8401,11 @@ button.close {
   background: url(/images/controls.png?3517b41f5d6a8b39e5d392a01370bc0e) no-repeat -43px 0;
 }
 
+body {
+  background: #fdfdfd;
+}
+
+.social a {
+  display: inline-block;
+}
+

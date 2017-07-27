@@ -41,6 +41,7 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
+        dd($request);
         page::create([
             'title'    => $request->title,
             'slug'     => $request->slug,

@@ -1,6 +1,6 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Add Presentation</h1>
+    <h1>Edit Post</h1>
     <div class="row">
 
         <form method="POST" action="/admin/posts/{{ $id }}/update" enctype="multipart/form-data">
@@ -38,6 +38,7 @@
                     <label for="the_content" class="control-label">Content</label>
                     <textarea name="the_content" id="the_content" class="form-control" rows="5">{{ $the_content }}</textarea>
                 </div>
+                @ckeditor('the_content')
             </div>
 
             <div class="col-md-4">

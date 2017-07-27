@@ -1,6 +1,6 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Posts</h1>
+    <h1>Posts</h1><a href="/admin/posts/add" class="btn btn-primary btn-super">Add Post</a>
     @if($posts)
         <table class="table table-striped">
             <thead class="thead-default">

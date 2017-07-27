@@ -50,7 +50,7 @@ class PostController extends Controller
 
         Post::create([
             'title'         => $request->title,
-            'the_content'   => $request->the_content,
+            'the_content'   => json_encode($request->the_content),
             'the_excerpt'   => '',
             'preview_image' => 'thumbnail-' . $image_name,
             'full_image'    => $image_name,

@@ -1,10 +1,10 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Add Presentation</h1>
-    <div class="row">
-        <form method="POST" action="/admin/posts/save" enctype="multipart/form-data">
-            {{ csrf_field() }}
+    <h1>Add Post</h1>
+    <form method="POST" action="/admin/posts/add" enctype="multipart/form-data">
+        {{ csrf_field() }}
 
+        <div class="row">
             <div class="col-md-8">
                 <div class="form-group{{ $errors->has('title') ? ' has-error' : '' }}">
                     <label for="title" class="control-label">Title</label>
@@ -36,6 +36,7 @@
                     <label for="the_content" class="control-label">Content</label>
                     <textarea name="the_content" id="the_content" class="form-control" rows="5"></textarea>
                 </div>
+                @ckeditor('the_content')
             </div>
 
             <div class="col-md-4">
@@ -51,6 +52,6 @@
                     </button>
                 </div>
             </div>
-        </form>
+    </form>
     </div>
 @endsection

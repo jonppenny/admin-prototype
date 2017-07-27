@@ -183,6 +183,8 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
 
+        JeroenNoten\LaravelCkEditor\ServiceProvider::class,
+
     ],
 
     /*
