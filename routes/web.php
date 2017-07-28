@@ -49,6 +49,7 @@ Route::middleware(['role'])->group(function () {
 Route::get('/myprofile', 'UserController@show');
 
 Route::get('{slug}', 'PageController@show');
+Route::get('/post/{slug}', 'PostController@show');
 
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');

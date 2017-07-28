@@ -41,7 +41,6 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        dd($request);
         page::create([
             'title'    => $request->title,
             'slug'     => $request->slug,
@@ -73,9 +72,10 @@ class PageController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Page $page
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @internal param Page $page
+     *
      */
     public function edit(int $id)
     {
@@ -96,7 +96,7 @@ class PageController extends Controller
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param int $id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -116,9 +116,10 @@ class PageController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Page $page
-     *
+     * @param int $id
      * @return \Illuminate\Http\Response
+     * @internal param Page $page
+     *
      */
     public function destroy(int $id)
     {

@@ -16,8 +16,8 @@
 
                     @if ($errors->has('title'))
                         <span class="help-block">
-                    <strong>{{ $errors->first('title') }}</strong>
-                </span>
+                            <strong>{{ $errors->first('title') }}</strong>
+                        </span>
                     @endif
                 </div>
 
@@ -36,7 +36,8 @@
 
                 <div class="form-group{{ $errors->has('the_content') ? ' has-error' : '' }}">
                     <label for="the_content" class="control-label">Content</label>
-                    <textarea name="the_content" id="the_content" class="form-control" rows="5">{{ $the_content }}</textarea>
+                    <textarea name="the_content" id="the_content" class="form-control"
+                              rows="5">{{ $the_content }}</textarea>
                 </div>
                 @ckeditor('the_content')
             </div>
@@ -75,7 +76,7 @@
                     <br/>
                     <br/>
                     <button type="submit" class="btn btn-danger">
-                        DELETE POST
+                        Delete Post
                     </button>
                 </div>
             </form>

@@ -50,13 +50,14 @@ class PostController extends Controller
 
         Post::create([
             'title'         => $request->title,
+            'slug'          => $request->slug,
             'the_content'   => json_encode($request->the_content),
-            'the_excerpt'   => '',
+            'the_excerpt'   => json_encode('a'),
             'preview_image' => 'thumbnail-' . $image_name,
             'full_image'    => $image_name,
         ]);
 
-        return redirect()->to('/admin/posts/all');
+        return redirect()->to('/admin/posts');
     }
 
     /**
@@ -65,11 +66,11 @@ class PostController extends Controller
      * @param  int $id
      * @return \Illuminate\Http\Response
      */
-    public function show($slug)
+    public function show(string $slug)
     {
         $post = Post::where('slug', $slug)->first();
 
-        return view('site.pages.default', compact('post'));
+        return view('site.pages.post', compact('post'));
     }
 
     /**
@@ -83,7 +84,7 @@ class PostController extends Controller
         $post        = Post::find($id);
         $id          = $post->id;
         $title       = $post->title;
-        $the_content = $post->the_content;
+        $the_content = json_decode($post->the_content);
         $created_at  = $post->created_at;
         $updated_at  = $post->updated_at;
         $slug        = $post->slug;
