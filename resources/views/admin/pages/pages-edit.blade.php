@@ -32,6 +32,12 @@
                         </span>
                     @endif
                 </div>
+
+                <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
+                    <label for="the_content" class="control-label">Content</label>
+                    <textarea name="the_content" id="the_content" class="form-control" rows="5">{{ $the_content }}</textarea>
+                </div>
+                @ckeditor('the_content')
             </div>
             <div class="col-sm-12 col-md-4">
                 @if($templates)

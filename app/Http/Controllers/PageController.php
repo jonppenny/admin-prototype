@@ -42,9 +42,10 @@ class PageController extends Controller
     public function store(Request $request)
     {
         page::create([
-            'title'    => $request->title,
-            'slug'     => $request->slug,
-            'template' => $request->template,
+            'title'       => $request->title,
+            'slug'        => $request->slug,
+            'template'    => $request->template,
+            'the_content' => json_encode($request->the_content),
         ]);
 
         return redirect()->to('/admin/pages');
@@ -61,18 +62,20 @@ class PageController extends Controller
     {
         $page = Page::where('slug', $slug)->firstOrFail()->getAttributes();
 
-        $title    = $page['title'];
-        $template = ($page['template'])
+        $title       = $page['title'];
+        $the_content = json_decode($page['the_content']);
+        $template    = ($page['template'])
             ? $page['template']
             : 'default';
 
-        return view('site.pages.' . $template, compact('title'));
+        return view('site.pages.' . $template, compact('title', 'the_content'));
     }
 
     /**
      * Show the form for editing the specified resource.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\Response
      * @internal param Page $page
      *
@@ -85,18 +88,19 @@ class PageController extends Controller
         $title           = $page->title;
         $slug            = $page->slug;
         $active_template = $page->template;
+        $the_content     = json_decode($page->the_content);
 
         $templates = getFiles(resource_path('views/site/pages'));
 
         return view(
             'admin.pages.pages-edit',
-            compact('id', 'title', 'slug', 'active_template', 'templates')
+            compact('id', 'title', 'slug', 'active_template', 'templates', 'the_content')
         );
     }
 
     /**
      * @param \Illuminate\Http\Request $request
-     * @param int $id
+     * @param int                      $id
      *
      * @return \Illuminate\Http\RedirectResponse
      */
@@ -117,6 +121,7 @@ class PageController extends Controller
      * Remove the specified resource from storage.
      *
      * @param int $id
+     *
      * @return \Illuminate\Http\Response
      * @internal param Page $page
      *

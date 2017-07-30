@@ -8354,13 +8354,17 @@ body {
   background: #fdfdfd;
 }
 
+.navbar {
+  border-radius: 0;
+}
+
 .social a {
   display: inline-block;
 }
 
 footer .container {
   margin-top: 20px;
-  padding-top: 20px;
-  border-top: 1px solid #f0f0f0;
+  padding: 20px 15px;
+  border-top: 1px solid #e1e1e1;
 }
 

@@ -17,6 +17,7 @@ class Page extends Model
         'title',
         'slug',
         'template',
+        'the_content',
     ];
 
     public static function saveImage($image_name, $image_path)

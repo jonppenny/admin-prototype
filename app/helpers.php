@@ -79,6 +79,9 @@ if (!function_exists('getFiles')) {
 
 if (!function_exists('displayMenu')) {
     /**
+     * Display the menu based on the menu name and arguments.
+     * TODO: build up the menu to be more flexible
+     *
      * @param array $args
      */
     function displayMenu($args = [])

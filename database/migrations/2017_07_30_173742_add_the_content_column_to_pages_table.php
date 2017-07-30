@@ -14,7 +14,7 @@ class AddTheContentColumnToPagesTable extends Migration
     public function up()
     {
         Schema::table('pages', function (Blueprint $table) {
-            $table->json('the_content');
+            $table->json('the_content')->nullable();
         });
     }
 
