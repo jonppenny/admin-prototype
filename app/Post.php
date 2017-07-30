@@ -3,6 +3,7 @@
 namespace App;
 
 use Illuminate\Database\Eloquent\Model;
+use Illuminate\Support\Facades\File;
 use Intervention\Image\ImageManagerStatic as Image;
 
 class Post extends Model
@@ -24,6 +25,8 @@ class Post extends Model
     public static function saveImage($image_name, $image_path)
     {
         $path = public_path() . '/uploads/';
+
+        File::exists($path) or File::makeDirectory($path, $mode = 0755, $recursive = false, $force = false);
 
         $image = Image::make($image_path);
 

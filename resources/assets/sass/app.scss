@@ -1,16 +1,11 @@
-
 // Fonts
 @import url("https://fonts.googleapis.com/css?family=Raleway:300,400,600");
-
 // Variables
 @import "variables";
-
 // Bootstrap
 @import "node_modules/bootstrap-sass/assets/stylesheets/bootstrap";
 
 // front end
-
-@import "frontend/bx-slider";
 
 body {
   background: #fdfdfd;
@@ -18,4 +13,12 @@ body {
 
 .social a {
   display: inline-block;
+}
+
+footer {
+  .container {
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid #f0f0f0;
+  }
 }

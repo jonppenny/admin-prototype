@@ -34,32 +34,51 @@
 
 </script>
 <div id="app">
+    <nav class="navbar navbar-inverse">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse" data-target="#navbar"
+                        aria-expanded="false" aria-controls="navbar">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">{{ config('app.name', 'Jon P Penny') }}</a>
+            </div>
+            <div id="navbar" class="collapse navbar-collapse">
+                {{ displayMenu() }}
+            </div><!-- /.nav-collapse -->
+        </div><!-- /.container -->
+    </nav>
     @yield('content')
-    <div class="container">
-        <div class="row">
-            <div class="col-md-6">
-                <div class="social">
-                    <a href="mailto:jon@jonppenny.co.uk" title="Email">
-                        <img width="32" height="32" src="/images/iconmonstr-email-10.svg" alt="Email"/>
-                    </a>
-                    <a href="http://twitter.com/jonppenny" title="Twitter">
-                        <img width="32" height="32" src="/images/iconmonstr-twitter-4.svg" alt="Twitter"/>
-                    </a>
-                    <a href="http://uk.linkedin.com/in/jonppenny" title="LinkedIn">
-                        <img width="32" height="32" src="/images/iconmonstr-linkedin-4.svg" alt="LinkedIn"/>
-                    </a>
-                    <a href="https://github.com/jonppenny" title="Github">
-                        <img width="32" height="32" src="/images/iconmonstr-github-4.svg" alt="Github"/>
-                    </a>
+    <footer>
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <div class="social">
+                        <a href="mailto:jon@jonppenny.co.uk" title="Email">
+                            <img width="32" height="32" src="/images/iconmonstr-email-10.svg" alt="Email"/>
+                        </a>
+                        <a href="http://twitter.com/jonppenny" title="Twitter">
+                            <img width="32" height="32" src="/images/iconmonstr-twitter-4.svg" alt="Twitter"/>
+                        </a>
+                        <a href="http://uk.linkedin.com/in/jonppenny" title="LinkedIn">
+                            <img width="32" height="32" src="/images/iconmonstr-linkedin-4.svg" alt="LinkedIn"/>
+                        </a>
+                        <a href="https://github.com/jonppenny" title="Github">
+                            <img width="32" height="32" src="/images/iconmonstr-github-4.svg" alt="Github"/>
+                        </a>
+                    </div>
+                </div>
+                <div class="col-md-6 text-right">
+                    <p>
+                        <small>Copyright &copy; {{ date('Y') }}. All rights reserved.</small>
+                    </p>
                 </div>
             </div>
-            <div class="col-md-6 text-right">
-                <p>
-                    <small>Copyright &copy; {{ date('Y') }}. All rights reserved.</small>
-                </p>
-            </div>
         </div>
-    </div>
+    </footer>
 </div>
 <!-- Scripts -->
 <script src="{{ asset('js/app.js') }}"></script>

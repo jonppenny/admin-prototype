@@ -76,3 +76,26 @@ if (!function_exists('getFiles')) {
         return $result;
     }
 }
+
+if (!function_exists('displayMenu')) {
+    /**
+     * @param array $args
+     */
+    function displayMenu($args = [])
+    {
+        $pages = \App\Page::all();
+
+        if ($pages) {
+            print('<ul class="nav navbar-nav">');
+            foreach ($pages as $page) {
+                printf(
+                    '<li class="%s"><a href="%s">%s</a></li>',
+                    setActive($page->slug),
+                    $page->slug,
+                    $page->title
+                );
+            }
+            print('<ul>');
+        }
+    }
+}

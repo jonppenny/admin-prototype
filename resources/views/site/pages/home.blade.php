@@ -4,7 +4,7 @@
     <div class="container">
         <div class="row">
             <div class="col-md-12">
-                <h1>{{ config('app.name', 'Jon P Penny') }}</h1>
+                <h1>Welcome!</h1>
 
                 <p>Web developer/programmer. Geek. Gamer. Star Wars nerd. Digital content manager for <a
                             href="http://ponty.net">Pontypridd
