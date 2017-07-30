@@ -1,8 +1,8 @@
 @extends('admin.partials.base')
 @section('content')
-    <h1>Add Users</h1>
+    <h1>Add Menu</h1>
     <div>
-        <form method="POST" action="/admin/users/add" enctype="multipart/form-data">
+        <form method="POST" action="/admin/menus/add" enctype="multipart/form-data">
             {{ csrf_field() }}
 
             <div class="row">
@@ -15,8 +15,8 @@
 
                         @if ($errors->has('name'))
                             <span class="help-block">
-                        <strong>{{ $errors->first('name') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('name') }}</strong>
+                            </span>
                         @endif
                     </div>
 
@@ -29,8 +29,8 @@
 
                         @if ($errors->has('email'))
                             <span class="help-block">
-                        <strong>{{ $errors->first('email') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('email') }}</strong>
+                            </span>
                         @endif
                     </div>
 
@@ -41,8 +41,8 @@
 
                         @if ($errors->has('password'))
                             <span class="help-block">
-                        <strong>{{ $errors->first('password') }}</strong>
-                    </span>
+                                <strong>{{ $errors->first('password') }}</strong>
+                            </span>
                         @endif
                     </div>
 
@@ -57,26 +57,8 @@
                     <div class="form-group">
                         <label class="control-label">Publish</label>
                         <button type="submit" class="btn btn-primary form-control">
-                            Add User
+                            Add Menu
                         </button>
-                    </div>
-
-                    <div class="form-group">
-                        <label for="role" class="control-label">User role</label>
-
-                        <select name="role" id="role" class="form-control" required>
-                            <option>Please Select</option>
-                            <option value="admin">Admin</option>
-                            <option value="manager">Manager</option>
-                            <option value="user">User</option>
-                        </select>
-                    </div>
-
-                    <div class="form-group">
-                        <label class="control-label">Avatar Image</label><br/>
-                        <label for="user-avatar" class="btn btn-primary">Select File</label>
-                        <input type="file" name="avatar_image" id="user-avatar" class="user-avatar" style="visibility: hidden; height: 1px;">
-                        <p class="help-block">Upload an image to use as an avatar.</p>
                     </div>
                 </div>
             </div>

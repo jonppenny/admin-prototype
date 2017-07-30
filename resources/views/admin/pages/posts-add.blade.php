@@ -41,16 +41,18 @@
 
             <div class="col-md-4">
                 <div class="form-group">
-                    <label for="preview-image">File input</label>
-                    <input type="file" name="preview_image" id="preview-image" class="preview-image">
-                    <p class="help-block">Example block-level help text here.</p>
-                </div>
-
-                <div class="form-group">
-                    <button type="submit" class="btn btn-primary">
-                        Publish
+                    <label class="control-label">Publish</label>
+                    <button type="submit" class="btn btn-primary form-control">
+                        Add Post
                     </button>
                 </div>
+                <div class="form-group">
+                    <label class="control-label">Preview Image</label><br/>
+                    <label for="preview-image" class="btn btn-primary">Select File</label>
+                    <input type="file" name="preview_image" id="preview-image" class="preview-image" style="visibility: hidden; height: 1px;">
+                    <p class="help-block">Upload an image to use as a featured image.</p>
+                </div>
+
             </div>
         </div>
     </form>

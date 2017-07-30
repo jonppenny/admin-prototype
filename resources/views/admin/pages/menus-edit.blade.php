@@ -53,13 +53,6 @@
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">
-                    <label class="control-label">Publish</label>
-                    <button type="submit" class="btn btn-primary form-control">
-                        Edit User
-                    </button>
-                </div>
-
-                <div class="form-group">
                     <label for="role" class="control-label">User role</label>
 
                     <select name="role" id="role" class="form-control">
@@ -73,11 +66,13 @@
                 <div class="form-group">
                     <label class="control-label">Avatar Image</label><br/>
                     @if($user_avatar)
-                        <p><img src="/uploads/{{ $user_avatar }}" alt="{{ $name }}" style="margin-right: 10px;"/></p>
+                        <img src="/uploads/{{ $user_avatar }}" alt="{{ $name }}" style="margin-right: 10px;"/>
                     @else
-                        <p><img src="/images/default-avatar.png" alt="{{ $name }}" style="margin-right: 10px;"/></p>
+                        <img src="/images/default-avatar.png" alt="{{ $name }}" style="margin-right: 10px;"/>
                     @endif
+                </div>
 
+                <div class="form-group">
                     <label for="user-avatar" class="btn btn-primary">Select file</label>
                     <input type="file" name="avatar_image" id="user-avatar" class="user-avatar" style="visibility: hidden; height: 1px;">
                     <p class="help-block">Upload an image to use as an avatar.</p>
@@ -85,6 +80,11 @@
             </div>
         </div>
 
+        <div class="form-group">
+            <button type="submit" class="btn btn-primary">
+                Update
+            </button>
+        </div>
     </form>
 
     <form class="" method="POST" action="/admin/users/{{ $id }}/delete">

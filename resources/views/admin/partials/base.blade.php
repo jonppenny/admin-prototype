@@ -115,6 +115,9 @@
                             <li class="{{ setActive('admin/users/add') }}"><a href="/admin/users/add">Add Users</a></li>
                         </ul>
                     </li>
+                    <li class="{{ setActive('admin/menus*') }}">
+                        <a href="/admin/menus">Menus</a>
+                    </li>
                     <li class="{{ setActive('admin/settings*') }}">
                         <a href="/admin/settings">Settings</a>
                     </li>

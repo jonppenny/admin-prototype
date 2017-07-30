@@ -39,21 +39,24 @@
                 @ckeditor('the_content')
             </div>
             <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Publish</label>
+                    <button type="submit" class="btn btn-primary form-control">
+                        Add Page
+                    </button>
+                </div>
                 @if($templates)
-                    <label for="template">Choose a template</label>
-                    <select name="template" id="template" class="form-control" required>
-                        @foreach($templates as $template)
-                            <option value="{{ $template }}">{{ ucfirst($template) }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label for="template">Choose a template</label>
+                        <select name="template" id="template" class="form-control" required>
+                            @foreach($templates as $template)
+                                <option value="{{ $template }}">{{ ucfirst($template) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 @endif
             </div>
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">
-                Add Page
-            </button>
-        </div>
     </form>
 @endsection

@@ -8,13 +8,23 @@ use Illuminate\Http\Request;
 class MenuController extends Controller
 {
     /**
+     * [__construct description]
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
+
+    /**
      * Display a listing of the resource.
      *
      * @return \Illuminate\Http\Response
      */
     public function index()
     {
-        //
+        $menus = Menu::paginate(20);
+
+        return view('admin.pages.menus', compact('menus'));
     }
 
     /**
@@ -24,7 +34,7 @@ class MenuController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.pages.menus-add');
     }
 
     /**

@@ -10,6 +10,7 @@
                 <th>Created</th>
                 <th>Updated</th>
                 <th>Manage</th>
+                <th>View</th>
             </tr>
             </thead>
             <tbody>
@@ -29,6 +30,9 @@
                                 Delete
                             </button>
                         </form>
+                    </td>
+                    <td>
+                        <a href="/post/{{ $post->slug }}" class="btn btn-primary">View</a>
                     </td>
                 </tr>
             @endforeach

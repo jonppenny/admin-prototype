@@ -35,27 +35,31 @@
 
                 <div class="form-group{{ $errors->has('content') ? ' has-error' : '' }}">
                     <label for="the_content" class="control-label">Content</label>
-                    <textarea name="the_content" id="the_content" class="form-control" rows="5">{{ $the_content }}</textarea>
+                    <textarea name="the_content" id="the_content" class="form-control"
+                              rows="5">{{ $the_content }}</textarea>
                 </div>
                 @ckeditor('the_content')
             </div>
             <div class="col-sm-12 col-md-4">
+                <div class="form-group">
+                    <label class="control-label">Publish</label>
+                    <button type="submit" class="btn btn-primary form-control">
+                        Edit Page
+                    </button>
+                </div>
                 @if($templates)
-                    <label for="template">Choose a template</label>
-                    <select name="template" id="template" class="form-control">
-                        @foreach($templates as $template)
-                            <option value="{{ $template }}" {{ setSelected($active_template, $template) }}>{{ ucfirst($template) }}</option>
-                        @endforeach
-                    </select>
+                    <div class="form-group">
+                        <label for="template">Choose a template</label>
+                        <select name="template" id="template" class="form-control">
+                            @foreach($templates as $template)
+                                <option value="{{ $template }}" {{ setSelected($active_template, $template) }}>{{ ucfirst($template) }}</option>
+                            @endforeach
+                        </select>
+                    </div>
                 @endif
             </div>
         </div>
 
-        <div class="form-group">
-            <button type="submit" class="btn btn-primary">
-                Update
-            </button>
-        </div>
     </form>
 
     <form class="" method="POST" action="/admin/pages/{{ $id }}/delete">

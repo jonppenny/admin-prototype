@@ -43,6 +43,13 @@ Route::middleware(['role'])->group(function () {
     Route::get('/admin/pages/{id}/edit', 'PageController@edit');
     Route::patch('/admin/pages/{id}/update', 'PageController@update');
     Route::delete('/admin/pages/{id}/delete', 'PageController@destroy');
+    
+    Route::get('/admin/menus', 'MenuController@index');
+    Route::get('/admin/menus/add', 'MenuController@create');
+    Route::post('/admin/menus/add', 'MenuController@store');
+    Route::get('/admin/menus/{id}/edit', 'MenuController@edit');
+    Route::patch('/admin/menus/{id}/update', 'MenuController@update');
+    Route::delete('/admin/menus/{id}/delete', 'MenuController@destroy');
 });
 
 
