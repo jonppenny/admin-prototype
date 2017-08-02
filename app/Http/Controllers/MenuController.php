@@ -3,6 +3,7 @@
 namespace App\Http\Controllers;
 
 use App\Menu;
+use App\Page;
 use Illuminate\Http\Request;
 
 class MenuController extends Controller
@@ -34,13 +35,16 @@ class MenuController extends Controller
      */
     public function create()
     {
-        return view('admin.pages.menus-add');
+        $pages = Page::all();
+
+        return view('admin.pages.menus-add', compact('pages'));
     }
 
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
+     * @param  \Illuminate\Http\Request $request
+     *
      * @return \Illuminate\Http\Response
      */
     public function store(Request $request)
@@ -51,7 +55,8 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\Menu  $menu
+     * @param  \App\Menu $menu
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Menu $menu)
@@ -62,34 +67,58 @@ class MenuController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Menu  $menu
+     * @param  \App\Menu $menu
+     *
      * @return \Illuminate\Http\Response
      */
-    public function edit(Menu $menu)
+    public function edit(int $id)
     {
-        //
+        $menu = Menu::find($id);
+
+        $id   = $menu->id;
+        $name = $menu->name;
+
+        return view(
+            'admin.pages.menus-edit',
+            compact('id', 'name')
+        );
     }
 
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Menu  $menu
+     * @param  \Illuminate\Http\Request $request
+     * @param int                       $id
+     *
      * @return \Illuminate\Http\Response
+     * @internal param Menu $menu
+     *
      */
-    public function update(Request $request, Menu $menu)
+    public function update(Request $request, int $id)
     {
-        //
+        $menu = Menu::find($id);
+
+        if ($request->name) {
+            $menu->name = $request->name;
+        }
+
+        $menu->save();
+
+        return redirect()->to('/admin/menus/' . $id . '/edit');
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Menu  $menu
+     * @param  int $id
+     *
      * @return \Illuminate\Http\Response
      */
-    public function destroy(Menu $menu)
+    public function destroy(int $id)
     {
-        //
+        $menu = Menu::find($id);
+        $menu->delete();
+
+        return redirect()->to('/admin/menus');
     }
 }

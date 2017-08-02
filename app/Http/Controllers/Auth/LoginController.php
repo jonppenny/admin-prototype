@@ -67,14 +67,11 @@ class LoginController extends Controller
      */
     public function postValidateToken(ValidateSecretRequest $request)
     {
-        //get user id and create cache key
         $userId = $request->session()->pull('2fa:user:id');
         $key    = $userId . ':' . $request->totp;
 
-        //use cache to store token to blacklist
         Cache::add($key, true, 4);
 
-        //login and redirect user
         Auth::loginUsingId($userId);
 
         return redirect()->to('/');
