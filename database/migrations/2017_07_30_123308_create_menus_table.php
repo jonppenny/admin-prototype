@@ -17,7 +17,7 @@ class CreateMenusTable extends Migration
             $table->increments('id');
             $table->timestamps();
             $table->text('name');
-            $table->json('page_ids');
+            $table->json('page_ids')->nullable();
         });
     }
 

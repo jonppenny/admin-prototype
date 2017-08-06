@@ -86,10 +86,23 @@ if (!function_exists('displayMenu')) {
      */
     function displayMenu($args = [])
     {
-        $pages = \App\Page::all();
+
+        $defaults = [
+            'name' => '',
+            'class' => 'nav navbar-nav',
+        ];
+
+        $name = (isset($args['name'])) ? $args['name'] : '';
+        $class = (isset($args['class'])) ? $args['class'] : $defaults['class'];
+
+        if ($name) {
+            $pages = \App\Menu::where('name', $name)->first;
+        } else {
+            $pages = \App\Page::all();
+        }
 
         if ($pages) {
-            print('<ul class="nav navbar-nav">');
+            printf('<ul class="%s">', $class);
             foreach ($pages as $page) {
                 printf(
                     '<li class="%s"><a href="%s">%s</a></li>',
@@ -98,7 +111,7 @@ if (!function_exists('displayMenu')) {
                     $page->title
                 );
             }
-            print('<ul>');
+            printf('</ul>');
         }
     }
 }

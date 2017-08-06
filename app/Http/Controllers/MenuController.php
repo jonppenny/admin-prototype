@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class MenuController extends Controller
 {
+
     /**
      * [__construct description]
      */
@@ -49,7 +50,11 @@ class MenuController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        Menu::create([
+            'name'     => $request->name,
+        ]);
+
+        return redirect()->to('/admin/menus');
     }
 
     /**
@@ -61,26 +66,27 @@ class MenuController extends Controller
      */
     public function show(Menu $menu)
     {
-        //
+        // TODO: This is not needed
+        // REFACTOR: This can be removed at some point
     }
 
     /**
-     * Show the form for editing the specified resource.
+     * @param int $id
      *
-     * @param  \App\Menu $menu
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function edit(int $id)
     {
         $menu = Menu::find($id);
+
+        $pages = Page::all();
 
         $id   = $menu->id;
         $name = $menu->name;
 
         return view(
             'admin.pages.menus-edit',
-            compact('id', 'name')
+            compact('id', 'name', 'pages')
         );
     }
 
@@ -100,6 +106,10 @@ class MenuController extends Controller
 
         if ($request->name) {
             $menu->name = $request->name;
+        }
+
+        if ($request->post_ids) {
+            $menu->post_ids = json_encode($request->post_ids);
         }
 
         $menu->save();

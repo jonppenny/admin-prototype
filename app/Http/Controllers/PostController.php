@@ -8,6 +8,7 @@ use Intervention\Image\ImageManagerStatic as Image;
 
 class PostController extends Controller
 {
+
     /**
      * Display a listing of the resource.
      *
@@ -50,12 +51,12 @@ class PostController extends Controller
         }
 
         Post::create([
-            'title'         => $request->title,
-            'slug'          => $request->slug,
-            'the_content'   => json_encode($request->the_content),
-            'the_excerpt'   => json_encode('a'),
-            'preview_image' => 'thumbnail-' . $image_name,
-            'full_image'    => $image_name,
+          'title'         => $request->title,
+          'slug'          => $request->slug,
+          'the_content'   => json_encode($request->the_content),
+          'the_excerpt'   => json_encode('a'),
+          'preview_image' => 'thumbnail-' . $image_name,
+          'full_image'    => $image_name,
         ]);
 
         return redirect()->to('/admin/posts');
@@ -64,7 +65,7 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param  string $slug
      *
      * @return \Illuminate\Http\Response
      */
@@ -94,16 +95,17 @@ class PostController extends Controller
         $preview_image = '';
 
         return view(
-            'admin.pages.posts-edit',
-            compact('id', 'title', 'the_content', 'created_at', 'updated_at', 'slug', 'preview_image')
+          'admin.pages.posts-edit',
+          compact('id', 'title', 'the_content', 'created_at', 'updated_at',
+            'slug', 'preview_image')
         );
     }
 
     /**
-     * Update the specified resource in storage.
+     * @param \Illuminate\Http\Request $request
+     * @param int                      $id
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function update(Request $request, int $id)
     {

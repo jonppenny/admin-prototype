@@ -17,7 +17,7 @@
                     <td>
                         {{ $menu->id }}
                     </td>
-                    <td>{{ $menus->name }}</td>
+                    <td>{{ $menu->name }}</td>
                     <td>
                         <a href="/admin/menus/{{ $menu->id }}/edit" class="btn btn-primary">Edit</a>
                         <form class="" method="POST" action="/admin/menus/{{ $menu->id }}/delete" style="display: inline-block;">
