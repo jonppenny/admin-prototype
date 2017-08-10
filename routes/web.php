@@ -30,7 +30,8 @@ Route::middleware(['role'])->group(function () {
     Route::patch('/admin/users/{id}/update', 'UserController@update');
     Route::delete('/admin/users/{id}/delete', 'UserController@destroy');
 
-    Route::get('/admin/settings', 'SettingController@index');
+    Route::get('/admin/settings', 'SettingsController@index');
+    Route::patch('/admin/settings/update', 'UserController@update');
 
     Route::get('/admin/pages', 'PageController@index');
     Route::get('/admin/pages/add', 'PageController@create');
@@ -47,9 +48,9 @@ Route::middleware(['role'])->group(function () {
     Route::delete('/admin/menus/{id}/delete', 'MenuController@destroy');
 });
 
-Route::get('/', 'HomeController@index')->name('home');
-Route::get('/myprofile', 'UserController@show');
+Route::get('/', 'HomeController@index');
 Route::get('{slug}', 'PageController@show');
+Route::get('/myprofile', 'UserController@show');
 Route::get('/post/{slug}', 'PostController@show');
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');

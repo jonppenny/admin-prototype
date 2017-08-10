@@ -7,6 +7,13 @@ use Illuminate\Http\Request;
 
 class PageController extends Controller
 {
+    /**
+     * [__construct description]
+     */
+    public function __construct()
+    {
+        $this->middleware('auth');
+    }
 
     /**
      * Display a listing of the resource.
@@ -134,6 +141,6 @@ class PageController extends Controller
 
         $page->delete();
 
-        return redirect()->to('/admin/pages/all');
+        return redirect()->to('/admin/pages');
     }
 }
