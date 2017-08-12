@@ -13,14 +13,20 @@ class HomeController extends Controller
      */
     public function index()
     {
-        $home = \App\Settings::all();
+        $settings_all = \App\Settings::all();
+        
+        $settings_decode     = json_decode($settings_all);
+        
+        $settings = $settings_decode[0]->settings;
+        
+        $saved_settings = json_decode($settings);
 
-        $page = \App\Page::find($home->ID);
+        $page = \App\Page::find($saved_settings->home_page)->getAttributes();
 
-        $template = ($page['template'])
-            ? $page['template']
-            : 'home';
+        $template = ($page['template']) ? $page['template'] : 'home';
 
-        return view('site.pages.' . $template, compact(''));
+        $the_content = json_decode($page['the_content']);
+
+        return view('site.pages.' . $template, compact('the_content'));
     }
 }

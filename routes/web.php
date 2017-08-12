@@ -31,7 +31,7 @@ Route::middleware(['role'])->group(function () {
     Route::delete('/admin/users/{id}/delete', 'UserController@destroy');
 
     Route::get('/admin/settings', 'SettingsController@index');
-    Route::patch('/admin/settings/update', 'UserController@update');
+    Route::patch('/admin/settings/update', 'SettingsController@update');
 
     Route::get('/admin/pages', 'PageController@index');
     Route::get('/admin/pages/add', 'PageController@create');

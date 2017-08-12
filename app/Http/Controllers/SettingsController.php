@@ -7,20 +7,31 @@ use Illuminate\Http\Request;
 
 class SettingsController extends Controller
 {
-
-
     public function index()
     {
         $pages = \App\Page::all();
-        //dd($pages);
 
         return view('admin.pages.settings', compact('pages'));
     }
 
     public function update(Request $request)
     {
+        $pages = \App\Page::all();
+
         $settings = Settings::all();
-        dd($settings);
+
+        $settings_new = [
+            'home_page' => $request->page
+        ];
+
+        if (empty($settings)) {
+            dd('hfhfhfh');
+            Settings::create([
+                'settings' => json_encode($settings_new)
+            ]);
+            
+            return redirect()->to('/admin/settings');
+        }
 
         $settings_update = json_decode($settings);
 
@@ -28,6 +39,6 @@ class SettingsController extends Controller
 
         $settings->settings = json_encode($settings_update);
 
-        return view('admin.pages.settings', compact('settings'));
+        return redirect()->to('/admin/settings');
     }
 }
