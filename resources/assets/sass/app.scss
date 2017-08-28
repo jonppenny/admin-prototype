@@ -16,7 +16,13 @@ body {
 }
 
 .social a {
+  margin: 0 4px;
   display: inline-block;
+  color: inherit;
+  font-size: 2em;
+  &:hover {
+    text-decoration: none;
+  }
 }
 
 footer {
@@ -24,5 +30,10 @@ footer {
     margin-top: 20px;
     padding: 20px 15px;
     border-top: 1px solid #e1e1e1;
+  }
+  .nav {
+    a {
+      display: inline-block;
+    }
   }
 }

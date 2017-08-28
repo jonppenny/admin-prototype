@@ -8359,12 +8359,23 @@ body {
 }
 
 .social a {
+  margin: 0 4px;
   display: inline-block;
+  color: inherit;
+  font-size: 2em;
+}
+
+.social a:hover {
+  text-decoration: none;
 }
 
 footer .container {
   margin-top: 20px;
   padding: 20px 15px;
   border-top: 1px solid #e1e1e1;
+}
+
+footer .nav a {
+  display: inline-block;
 }
 
