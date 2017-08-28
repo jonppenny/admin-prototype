@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Settings;
 use Illuminate\Http\Request;
 
 class HomeController extends Controller
@@ -17,7 +18,7 @@ class HomeController extends Controller
         $template    = 'home';
         $the_content = '';
         
-        $settings_all = \App\Settings::all();
+        $settings_all = Settings::all();
         
         if (!isset($settings_all)) {
             dd($settings_all);

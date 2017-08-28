@@ -8,10 +8,10 @@
             <div class="col-sm-12 col-md-4">
                 @if($pages)
                     <div class="form-group row">
-                        <p>Select a page to assign as the the homepage page.</p>
-                        <label for="page" class="col-md-4 col-form-label">Choose page</label>
+                        <label for="page" class="col-md-4 col-form-label">Homepage page.</label>
                         <div class="col-md-8">
                             <select name="page" id="page" class="form-control">
+                                <option value="">Please select</option>
                                 @foreach($pages as $page)
                                     <option value="{{ $page->id }}">{{ ucfirst($page->title) }}</option>
                                 @endforeach
