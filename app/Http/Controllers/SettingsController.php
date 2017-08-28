@@ -25,7 +25,6 @@ class SettingsController extends Controller
         ];
 
         if (empty($settings)) {
-            dd('hfhfhfh');
             Settings::create([
                 'settings' => json_encode($settings_new)
             ]);
