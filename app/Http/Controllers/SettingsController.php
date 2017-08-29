@@ -26,6 +26,7 @@ class SettingsController extends Controller
         ];
 
         if (!isset($settings_all)) {
+            // jonfix: Not getting here! why not?
             dd($request);
             
             Settings::create([
@@ -41,6 +42,8 @@ class SettingsController extends Controller
 
         $settings->settings = json_encode($settings_update);*/
 
-        return redirect()->to('/admin/settings');
+        // jonfix: Set correct redirect when debug finished
+        return redirect()->to('/admin');
+        //return redirect()->to('/admin/settings');
     }
 }

@@ -5,11 +5,11 @@
         {{ csrf_field() }}
         {{ method_field('PATCH') }}
         <div class="row">
-            <div class="col-sm-12 col-md-4">
+            <div class="col-sm-12 col-md-6">
                 @if($pages)
                     <div class="form-group row">
-                        <label for="page" class="col-md-4 col-form-label">Homepage page.</label>
-                        <div class="col-md-8">
+                        <label for="page" class="col-md-6 col-form-label">Homepage page.</label>
+                        <div class="col-md-6">
                             <select name="page" id="page" class="form-control">
                                 <option value="">Please select</option>
                                 @foreach($pages as $page)
