@@ -120,7 +120,7 @@ class UserController extends Controller
 
     /**
      * CLEANUP: Tidy up the handling of how fields are checked
-     * FIXME: Why has this broken? Need to fix
+     * jonfix: Why has this broken? Need to fix
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request $request

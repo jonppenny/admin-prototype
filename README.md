@@ -14,5 +14,6 @@ Features in development:
 * Attach media to posts/pages
 * 2fa backup code recovery
 * Advanced menus
+* Settings panel
 
 There is also a bigger road map planned which I can outline here at a later date.

@@ -50,7 +50,7 @@
         <div class="container">
             <div class="row">
                 <div class="col-md-12">
-                    <div class="social">
+                    <div class="social text-right">
                         <a href="mailto:jon@jonppenny.co.uk" title="Email" class="fi-mail"></a>
                         <a href="http://twitter.com/jonppenny" title="Twitter" class="fi-social-twitter"></a>
                         <a href="http://uk.linkedin.com/in/jonppenny" title="LinkedIn" class="fi-social-linkedin"></a>

@@ -50,11 +50,11 @@ Route::middleware(['role'])->group(function () {
 
 Route::get('/', 'HomeController@index');
 Route::get('/myprofile', 'UserController@show');
-Route::get('/post/{slug}', 'PostController@show');
+Route::get('/post/{slug}', 'UrlController@showPost');
 Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
 Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
 Route::get('/2fa/validate', 'Auth\LoginController@getValidateToken');
 Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\LoginController@postValidateToken',]);
 
 // This must be last in the list
-Route::get('/{slug}', 'PageController@show');
+Route::get('/{slug}', 'UrlController@showPage');
