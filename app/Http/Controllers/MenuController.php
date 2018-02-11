@@ -51,7 +51,8 @@ class MenuController extends Controller
     public function store(Request $request)
     {
         Menu::create([
-            'name'     => $request->name,
+            'name'     => ($request->name) ? $request->name : '',
+            'page_ids' => ($request->page_ids) ? json_encode($request->page_ids) : ''
         ]);
 
         return redirect()->to('/admin/menus');
@@ -62,12 +63,11 @@ class MenuController extends Controller
      *
      * @param  \App\Menu $menu
      *
-     * @return \Illuminate\Http\Response
+     * @return void
      */
     public function show(Menu $menu)
     {
-        // TODO: This is not needed
-        // REFACTOR: This can be removed at some point
+        // TODO: display the menu based on arguments
     }
 
     /**
@@ -102,14 +102,16 @@ class MenuController extends Controller
      */
     public function update(Request $request, int $id)
     {
+        //dd($request);
+
         $menu = Menu::find($id);
 
         if ($request->name) {
             $menu->name = $request->name;
         }
 
-        if ($request->post_ids) {
-            $menu->post_ids = json_encode($request->post_ids);
+        if ($request->page_ids) {
+            $menu->page_ids = json_encode($request->page_ids);
         }
 
         $menu->save();
@@ -127,6 +129,7 @@ class MenuController extends Controller
     public function destroy(int $id)
     {
         $menu = Menu::find($id);
+
         $menu->delete();
 
         return redirect()->to('/admin/menus');

@@ -69,7 +69,7 @@
 
         <div class="form-group bg-danger" style="padding: 10px;">
             <strong>
-                <small>WANING: Deleting the presentation removes all data from
+                <small>WANING: Deleting the page removes all data from
                     the database. This action cannot be
                     undone.
                 </small>

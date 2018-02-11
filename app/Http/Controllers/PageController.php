@@ -1,5 +1,4 @@
 <?php
-
 namespace App\Http\Controllers;
 
 use App\Page;
@@ -48,11 +47,11 @@ class PageController extends Controller
      */
     public function store(Request $request)
     {
-        page::create([
-          'title'       => $request->title,
-          'slug'        => $request->slug,
-          'template'    => $request->template,
-          'the_content' => json_encode($request->the_content),
+        Page::create([
+            'title'       => $request->title,
+            'slug'        => $request->slug,
+            'template'    => $request->template,
+            'the_content' => json_encode($request->the_content),
         ]);
 
         return redirect()->to('/admin/pages');
@@ -72,8 +71,8 @@ class PageController extends Controller
         $title       = $page['title'];
         $the_content = json_decode($page['the_content']);
         $template    = ($page['template'])
-          ? $page['template']
-          : 'default';
+            ? $page['template']
+            : 'default';
 
         return view('site.pages.' . $template, compact('title', 'the_content'));
     }
@@ -100,9 +99,15 @@ class PageController extends Controller
         $templates = getFiles(resource_path('views/site/pages'));
 
         return view(
-          'admin.pages.pages-edit',
-          compact('id', 'title', 'slug', 'active_template', 'templates',
-            'the_content')
+            'admin.pages.pages-edit',
+            compact(
+                'id',
+                'title',
+                'slug',
+                'active_template',
+                'templates',
+                'the_content'
+            )
         );
     }
 

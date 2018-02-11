@@ -84,19 +84,17 @@ if (!function_exists('displayMenu')) {
      *
      * @param array $args
      */
-    function displayMenu($args = [])
+    function displayMenu($args = [
+        'name'  => '',
+        'depth' => -1,
+        'class' => 'nav navbar-nav'
+    ])
     {
-
-        $defaults = [
-            'name' => '',
-            'class' => 'nav navbar-nav',
-        ];
-
-        $name = (isset($args['name'])) ? $args['name'] : '';
-        $class = (isset($args['class'])) ? $args['class'] : $defaults['class'];
+        $name  = (isset($args['name'])) ? $args['name'] : '';
+        $class = (isset($args['class'])) ? $args['class'] : '';
 
         if ($name) {
-            $pages = \App\Menu::where('name', $name)->first;
+            $pages = \App\Menu::show();
         } else {
             $pages = \App\Page::all();
         }

@@ -10,7 +10,7 @@ class SettingsController extends Controller
 {
     public function index()
     {
-        $pages = \App\Page::all();
+        $pages = Page::all();
 
         return view('admin.pages.settings', compact('pages'));
     }
@@ -43,7 +43,6 @@ class SettingsController extends Controller
         $settings->settings = json_encode($settings_update);*/
 
         // jonfix: Set correct redirect when debug finished
-        return redirect()->to('/admin');
-        //return redirect()->to('/admin/settings');
+        return redirect()->to('/admin/settings');
     }
 }

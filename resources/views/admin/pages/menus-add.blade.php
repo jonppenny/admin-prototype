@@ -24,7 +24,7 @@
                         <div class="form-group">
                             <ul>
                             @foreach($pages as $page)
-                                <li><input type="checkbox" name="{{ $page->id }}" id="{{ $page->title }}"/>
+                                <li><input type="checkbox" name="page_ids[{{ $page->id }}]" id="{{ $page->title }}"/>
                                     <label for="{{ $page->title }}">{{ $page->title }}</label></li>
                             @endforeach
                             </ul>

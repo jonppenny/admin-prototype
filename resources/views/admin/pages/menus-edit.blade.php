@@ -23,7 +23,7 @@
                     <div class="form-group">
                         <ul>
                             @foreach($pages as $page)
-                                <li><input type="checkbox" name="{{ $page->id }}" id="{{ $page->title }}"/>
+                                <li><input type="checkbox" name="page_ids[{{ $page->id }}]" id="{{ $page->title }}"/>
                                     <label for="{{ $page->title }}">{{ $page->title }}</label></li>
                             @endforeach
                         </ul>
@@ -49,7 +49,7 @@
 
         <div class="form-group bg-danger" style="padding: 10px;">
             <strong>
-                <small>WANING: Deleting the user removes all data from
+                <small>WANING: Deleting the menu removes all data from
                     the database. This action cannot be
                     undone.
                 </small>
