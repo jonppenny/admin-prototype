@@ -89,36 +89,36 @@
         <div class="row">
             <div class="col-sm-3 col-md-2 sidebar">
                 <ul class="nav nav-sidebar">
-                    <li class="{{ setActive('admin') }}"><a href="/admin">Dashboard</a></li>
-                    <li class="{{ setActive('admin/posts*') }}">
+                    <li class="{{ set_active('admin') }}"><a href="/admin">Dashboard</a></li>
+                    <li class="{{ set_active('admin/posts*') }}">
                         <a href="/admin/posts">Posts</a>
                         <ul>
-                            <li class="{{ setActive('admin/posts') }}"><a href="/admin/posts">All
+                            <li class="{{ set_active('admin/posts') }}"><a href="/admin/posts">All
                                     Posts</a></li>
-                            <li class="{{ setActive('admin/posts/add') }}"><a href="/admin/posts/add">Add
+                            <li class="{{ set_active('admin/posts/add') }}"><a href="/admin/posts/add">Add
                                     Post</a></li>
                         </ul>
                     </li>
-                    <li class="{{ setActive('admin/pages*') }}">
+                    <li class="{{ set_active('admin/pages*') }}">
                         <a href="/admin/pages">Pages</a>
                         <ul>
-                            <li class="{{ setActive('admin/pages') }}"><a href="/admin/pages">All
+                            <li class="{{ set_active('admin/pages') }}"><a href="/admin/pages">All
                                     Pages</a></li>
-                            <li class="{{ setActive('admin/pages/add') }}"><a href="/admin/pages/add">Add
+                            <li class="{{ set_active('admin/pages/add') }}"><a href="/admin/pages/add">Add
                                     Page</a></li>
                         </ul>
                     </li>
-                    <li class="{{ setActive('admin/users*') }}">
+                    <li class="{{ set_active('admin/users*') }}">
                         <a href="/admin/users">Users</a>
                         <ul>
-                            <li class="{{ setActive('admin/users') }}"><a href="/admin/users">All Users</a></li>
-                            <li class="{{ setActive('admin/users/add') }}"><a href="/admin/users/add">Add Users</a></li>
+                            <li class="{{ set_active('admin/users') }}"><a href="/admin/users">All Users</a></li>
+                            <li class="{{ set_active('admin/users/add') }}"><a href="/admin/users/add">Add Users</a></li>
                         </ul>
                     </li>
-                    <li class="{{ setActive('admin/menus*') }}">
+                    <li class="{{ set_active('admin/menus*') }}">
                         <a href="/admin/menus">Menus</a>
                     </li>
-                    <li class="{{ setActive('admin/settings*') }}">
+                    <li class="{{ set_active('admin/settings*') }}">
                         <a href="/admin/settings">Settings</a>
                     </li>
                 </ul>
@@ -132,7 +132,7 @@
         <div class="container-fluid">
             <div class="row">
                 <div class="col-md-12 text-right">
-                    {{ displayVersion() }}
+                    {{ display_version() }}
                 </div>
             </div>
         </div>

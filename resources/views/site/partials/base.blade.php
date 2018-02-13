@@ -41,7 +41,7 @@
                 <a class="navbar-brand" href="/">{{ config('app.name', 'Jon P Penny') }}</a>
             </div>
             <div id="navbar" class="collapse navbar-collapse">
-                {{ displayMenu() }}
+                {{ display_menu() }}
             </div><!-- /.nav-collapse -->
         </div><!-- /.container -->
     </nav>

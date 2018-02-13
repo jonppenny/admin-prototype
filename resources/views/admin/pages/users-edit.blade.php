@@ -64,9 +64,9 @@
 
                     <select name="role" id="role" class="form-control">
                         <option value="">Please Select</option>
-                        <option value="admin" {{ setSelected($role, 'admin') }}>Admin</option>
-                        <option value="manager" {{ setSelected($role, 'manager') }}>Manager</option>
-                        <option value="user" {{ setSelected($role, 'user') }}>User</option>
+                        <option value="admin" {{ set_selected($role, 'admin') }}>Admin</option>
+                        <option value="manager" {{ set_selected($role, 'manager') }}>Manager</option>
+                        <option value="user" {{ set_selected($role, 'user') }}>User</option>
                     </select>
                 </div>
 

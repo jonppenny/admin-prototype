@@ -52,7 +52,7 @@
                         <label for="template">Choose a template</label>
                         <select name="template" id="template" class="form-control">
                             @foreach($templates as $template)
-                                <option value="{{ $template }}" {{ setSelected($active_template, $template) }}>{{ ucfirst($template) }}</option>
+                                <option value="{{ $template }}" {{ set_selected($active_template, $template) }}>{{ ucfirst($template) }}</option>
                             @endforeach
                         </select>
                     </div>

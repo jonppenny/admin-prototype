@@ -33,7 +33,7 @@ class PageController extends Controller
      */
     public function create()
     {
-        $templates = getFiles(resource_path('views/site/pages'));
+        $templates = get_files(resource_path('views/site/pages'));
 
         return view('admin.pages.pages-add', compact('templates'));
     }
@@ -96,7 +96,7 @@ class PageController extends Controller
         $active_template = $page->template;
         $the_content     = json_decode($page->the_content);
 
-        $templates = getFiles(resource_path('views/site/pages'));
+        $templates = get_files(resource_path('views/site/pages'));
 
         return view(
             'admin.pages.pages-edit',

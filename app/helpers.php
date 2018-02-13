@@ -8,7 +8,7 @@
  * @author Jon Penny <jon@completecontrolc.o.uk>
  */
 
-if (!function_exists('setSelected')) {
+if (!function_exists('set_selected')) {
     /**
      * Helper function to set the current option element in a select element to be selected if the $match is equal to
      * the $value.
@@ -21,13 +21,13 @@ if (!function_exists('setSelected')) {
      *
      * @return string
      */
-    function setSelected($match, $value, $selected = 'selected=selected')
+    function set_selected($match, $value, $selected = 'selected=selected')
     {
         return ($match === $value) ? $selected : '';
     }
 }
 
-if (!function_exists('setActive')) {
+if (!function_exists('set_active')) {
     /**
      * Helper function to set the menu item to active if the $path parameter matched to the current URL.
      * Wildcard paths are allowed using the asterix character.
@@ -37,23 +37,23 @@ if (!function_exists('setActive')) {
      *
      * @return string The $active parameter string
      */
-    function setActive($path, $active = 'active')
+    function set_active($path, $active = 'active')
     {
         return Request::is($path) ? $active : '';
     }
 }
 
-if (!function_exists('displayVersion')) {
+if (!function_exists('display_version')) {
     /**
      * Echo the version of the app.
      */
-    function displayVersion()
+    function display_version()
     {
         echo 'Version&nbsp;' . config('app.version');
     }
 }
 
-if (!function_exists('getFiles')) {
+if (!function_exists('get_files')) {
     /**
      * Get a list of all the blade templates that are in the
      * resources/views/sites directory. A template can then be assigned to a
@@ -63,7 +63,7 @@ if (!function_exists('getFiles')) {
      *
      * @return array $result An array containing a list of all the files
      */
-    function getFiles($directory)
+    function get_files($directory)
     {
         $result = [];
         $files  = array_diff(scandir($directory), ['..', '.']);
@@ -77,19 +77,20 @@ if (!function_exists('getFiles')) {
     }
 }
 
-if (!function_exists('displayMenu')) {
+if (!function_exists('display_menu')) {
     /**
      * Display the menu based on the menu name and arguments.
      * TODO: build up the menu to be more flexible
      *
      * @param array $args
      */
-    function displayMenu($args = [
+    function display_menu($args = [
         'name'  => '',
         'depth' => -1,
         'class' => 'nav navbar-nav'
     ])
     {
+        $pages = '';
         $name  = (isset($args['name'])) ? $args['name'] : '';
         $class = (isset($args['class'])) ? $args['class'] : '';
 
@@ -104,7 +105,7 @@ if (!function_exists('displayMenu')) {
             foreach ($pages as $page) {
                 printf(
                     '<li class="%s"><a href="%s">%s</a></li>',
-                    setActive($page->slug),
+                    set_active($page->slug),
                     $page->slug,
                     $page->title
                 );
