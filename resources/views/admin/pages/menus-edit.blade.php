@@ -19,7 +19,15 @@
                     @endif
                 </div>
 
+                {{--@if($page_ids)
+                    {{ $page_ids }}
+                    @foreach($page_ids as $key => $value)
+                        {{ $value }}
+                    @endforeach
+                @endif--}}
+
                 @if($pages)
+                    {{ $pages }}
                     <div class="form-group">
                         <ul>
                             @foreach($pages as $page)

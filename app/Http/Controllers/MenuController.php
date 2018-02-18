@@ -81,12 +81,13 @@ class MenuController extends Controller
 
         $pages = Page::all();
 
-        $id   = $menu->id;
-        $name = $menu->name;
+        $id       = $menu->id;
+        $name     = $menu->name;
+        $page_ids = $menu->page_ids;
 
         return view(
             'admin.pages.menus-edit',
-            compact('id', 'name', 'pages')
+            compact('id', 'name', 'pages', 'page_ids')
         );
     }
 
