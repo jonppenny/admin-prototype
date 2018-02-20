@@ -1,0 +1,11 @@
+Create search functionality
+------
+Create Media library functionality
+------
+Create Attach media to posts/pages functionality
+------
+Create 2fa backup code recovery functionality
+------
+Create Advanced menus functionality
+------
+Create Settings panel functionality
