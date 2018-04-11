@@ -5,7 +5,7 @@
  * called in any template files.
  *
  * @since  0.1.0
- * @author Jon Penny <jon@completecontrolc.o.uk>
+ * @author Jon Penny <jon@jonppenny.co.uk>
  */
 
 if (!function_exists('set_selected')) {
@@ -49,7 +49,7 @@ if (!function_exists('display_version')) {
      */
     function display_version()
     {
-        echo 'Version&nbsp;' . config('app.version');
+        printf('Version&nbsp;%s', config('app.version'));
     }
 }
 
@@ -84,13 +84,10 @@ if (!function_exists('display_menu')) {
      *
      * @param array $args
      */
-    function display_menu($args = [
-        'name'  => '',
-        'depth' => -1,
-        'class' => 'nav navbar-nav'
-    ])
+    function display_menu($args = ['name'  => '','depth' => -1,'class' => 'nav navbar-nav'])
     {
         $pages = '';
+
         $name  = (isset($args['name'])) ? $args['name'] : '';
         $class = (isset($args['class'])) ? $args['class'] : '';
 
