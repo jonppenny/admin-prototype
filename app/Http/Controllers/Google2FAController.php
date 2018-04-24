@@ -1,13 +1,18 @@
 <?php
+/** Google two factor authentication controller.
+ *
+ * @since  0.1.0
+ * @author Jon Penny <jon@jonppenny.co.uk>
+ */
 
 namespace App\Http\Controllers;
 
 use Crypt;
-use Google2FA;
+use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
-use \ParagonIE\ConstantTime\Base32;
+use ParagonIE\ConstantTime\Base32;
 
 class Google2FAController extends Controller
 {
@@ -104,7 +109,8 @@ class Google2FAController extends Controller
     /**
      * Generate a secret key in Base32 format
      *
-     * @param int $length The length of the random string that should be returned in bytes.
+     * @param int $min Minimum number
+     * @param int $max Maximum number
      *
      * @return string
      */

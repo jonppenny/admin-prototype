@@ -26,7 +26,7 @@
                     @endforeach
                 @endif--}}
 
-                @if($pages)
+                {{--@if($pages)
                     {{ $pages }}
                     <div class="form-group">
                         <ul>
@@ -36,7 +36,7 @@
                             @endforeach
                         </ul>
                     </div>
-                @endif
+                @endif--}}
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">

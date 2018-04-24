@@ -61,13 +61,23 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
+     * @param int        $id   Menu ID
+     * @param string     $name Menu name
      * @param  \App\Menu $menu
      *
      * @return void
      */
-    public function show(Menu $menu)
+    public function show(Menu $menu, int $id = 0, string $name = '')
     {
         // TODO: display the menu based on arguments
+
+        $menu = [];
+
+        if (isset($id) && $id > 0) {
+            $menu = Menu::find($id);
+        } else if (isset($name)) {
+            $menu = Menu::find($name);
+        }
     }
 
     /**
@@ -87,7 +97,7 @@ class MenuController extends Controller
 
         return view(
             'admin.pages.menus-edit',
-            compact('id', 'name', 'pages', 'page_ids')
+            compact('id', 'name', 'page_ids')
         );
     }
 
