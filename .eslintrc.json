@@ -5,11 +5,12 @@
     "promise"
   ],
   "rules": {
-    "indent": ["error", 4],
+    "indent": ["error", 2],
     "semi": [2, "always"],
     "space-before-function-paren": [0, "always"],
     "no-multi-spaces": "off",
-    "key-spacing": "off"
+    "key-spacing": "off",
+    "spaced-comment": "off"
   },
   "globals": {
     "jQuery": true
