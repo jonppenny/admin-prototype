@@ -91,8 +91,7 @@ if (!function_exists('display_menu')) {
             'depth' => -1,
             'class' => 'nav navbar-nav'
         ]
-    )
-    {
+    ) {
         $pages = '';
 
         $id    = (isset($args['id'])) ? $args['id'] : null;
@@ -101,7 +100,7 @@ if (!function_exists('display_menu')) {
 
         if ($id) {
             $pages = \App\Menu::show($id);
-        } else if ($name) {
+        } elseif ($name) {
             $pages = \App\Menu::show($name);
         } else {
             $pages = \App\Page::all();
