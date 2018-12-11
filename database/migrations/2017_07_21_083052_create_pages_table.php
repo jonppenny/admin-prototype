@@ -18,7 +18,7 @@ class CreatePagesTable extends Migration
             $table->timestamps();
             $table->string('title');
             $table->longText('slug');
-            $table->longText('template')->nullable;
+            $table->longText('template')->nullable();
         });
     }
 
