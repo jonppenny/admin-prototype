@@ -31,3 +31,14 @@ $factory->define(App\Page::class, function (Faker\Generator $faker) {
         'the_content' => json_encode($faker->paragraph)
     ];
 });
+
+$factory->define(App\Post::class, function (Faker\Generator $faker) {
+    return [
+        'title'         => $faker->word,
+        'slug'          => $faker->slug,
+        'the_content'   => json_encode('[string: ' . $faker->paragraph . ']'),
+        'the_excerpt'   => json_encode('[string: ' . $faker->paragraph . ']'),
+        'preview_image' => $faker->word,
+        'full_image'    => $faker->word,
+    ];
+});

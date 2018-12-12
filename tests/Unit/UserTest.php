@@ -3,7 +3,6 @@
 namespace Tests\Unit;
 
 use App\User;
-use function dd;
 use function factory;
 use function route;
 use Tests\TestCase;

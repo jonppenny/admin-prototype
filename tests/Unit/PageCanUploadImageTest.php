@@ -1,19 +1,16 @@
 <?php
 
-namespace Tests\Feature;
+namespace Tests\Unit;
 
 use App\Page;
 use Tests\TestCase;
-use Illuminate\Foundation\Testing\WithoutMiddleware;
 use Illuminate\Foundation\Testing\DatabaseMigrations;
 use Illuminate\Foundation\Testing\DatabaseTransactions;
 
-class ViewPagesTest extends TestCase
+class PageCanUploadImageTest extends TestCase
 {
-    use DatabaseMigrations;
-
     /** @test */
-    public function viewPages()
+    public function pageCanUploadImage()
     {
         $page = Page::create([
             'title'       => 'Test Page',
@@ -22,10 +19,6 @@ class ViewPagesTest extends TestCase
             'the_content' => json_encode('testing'),
         ]);
 
-        $response = $this->get('/' . $page->slug);
-
-        $response->assertStatus(200);
-        $response->assertSee('Test Page');
-        $response->assertSee('testing');
+        $response = $page::saveImage('test', 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/01/16/10/emperor-penguin.jpg');
     }
 }

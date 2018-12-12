@@ -18,17 +18,17 @@ Route::middleware(['role'])->group(function () {
 
     Route::get('/admin/posts', 'PostController@index');
     Route::get('/admin/posts/add', 'PostController@create');
-    Route::post('/admin/posts/add', 'PostController@store');
+    Route::post('/admin/posts/add', 'PostController@store')->name('post.store');
     Route::get('/admin/posts/{id}/edit', 'PostController@edit');
-    Route::patch('/admin/posts/{id}/update', 'PostController@update');
-    Route::delete('/admin/posts/{id}/delete', 'PostController@destroy');
+    Route::patch('/admin/posts/{id}/update', 'PostController@update')->name('post.update');
+    Route::delete('/admin/posts/{id}/delete', 'PostController@destroy')->name('post.delete');
 
     Route::get('/admin/users', 'UserController@index');
-    Route::get('/admin/users/add', 'UserController@create');
-    Route::post('/admin/users/add', 'UserController@store');
-    Route::get('/admin/users/{id}/edit', 'UserController@edit');
-    Route::patch('/admin/users/{id}/update', 'UserController@update');
-    Route::delete('/admin/users/{id}/delete', 'UserController@destroy');
+    Route::get('/admin/users/add', 'UserController@create')->name('user.add');
+    Route::post('/admin/users/add', 'UserController@store')->name('user.store');
+    Route::get('/admin/users/{id}/edit', 'UserController@edit')->name('user.edit');
+    Route::patch('/admin/users/{id}/update', 'UserController@update')->name('user.update');
+    Route::delete('/admin/users/{id}/delete', 'UserController@destroy')->name('user.delete');
 
     Route::get('/admin/settings', 'SettingsController@index');
     Route::patch('/admin/settings/update', 'SettingsController@update');
@@ -39,7 +39,7 @@ Route::middleware(['role'])->group(function () {
     Route::get('/admin/pages/{id}/edit', 'PageController@edit');
     Route::patch('/admin/pages/{id}/update', 'PageController@update');
     Route::delete('/admin/pages/{id}/delete', 'PageController@destroy');
-    
+
     Route::get('/admin/menus', 'MenuController@index');
     Route::get('/admin/menus/add', 'MenuController@create');
     Route::post('/admin/menus/add', 'MenuController@store');

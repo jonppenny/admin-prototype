@@ -58,12 +58,12 @@ class PostController extends Controller
         }
 
         Post::create([
-          'title'         => $request->title,
-          'slug'          => $request->slug,
-          'the_content'   => json_encode($request->the_content),
-          'the_excerpt'   => json_encode('a'),
-          'preview_image' => 'thumbnail-' . $image_name,
-          'full_image'    => $image_name,
+            'title'         => $request->title,
+            'slug'          => $request->slug,
+            'the_content'   => json_encode($request->the_content),
+            'the_excerpt'   => json_encode('a'),
+            'preview_image' => 'thumbnail-' . $image_name,
+            'full_image'    => $image_name,
         ]);
 
         return redirect()->to('/admin/posts');
@@ -102,9 +102,9 @@ class PostController extends Controller
         $preview_image = '';
 
         return view(
-          'admin.pages.posts-edit',
-          compact('id', 'title', 'the_content', 'created_at', 'updated_at',
-            'slug', 'preview_image')
+            'admin.pages.posts-edit',
+            compact('id', 'title', 'the_content', 'created_at', 'updated_at',
+                'slug', 'preview_image')
         );
     }
 
@@ -126,11 +126,10 @@ class PostController extends Controller
     }
 
     /**
-     * Remove the specified resource from storage.
+     * @param int $id
      *
-     * @param  int $id
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
+     * @throws \Exception
      */
     public function destroy(int $id)
     {
