@@ -25,9 +25,11 @@ class UserTest extends TestCase
         $response->assertStatus(302);
     }
 
-    public function test_view_user()
+    public function test_view_users()
     {
-        return;
+        $response = $this->get(route('users.show'));
+
+        $response->assertStatus(200);
     }
 
     public function test_update_user()

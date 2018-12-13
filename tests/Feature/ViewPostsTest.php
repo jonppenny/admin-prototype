@@ -13,7 +13,7 @@ class ViewPostsTest extends TestCase
     use DatabaseMigrations;
 
     /** @test */
-    public function viewPages()
+    public function viewPosts()
     {
         $post = Post::create([
             'title' => 'Test Post',

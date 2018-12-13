@@ -23,7 +23,7 @@ Route::middleware(['role'])->group(function () {
     Route::patch('/admin/posts/{id}/update', 'PostController@update')->name('post.update');
     Route::delete('/admin/posts/{id}/delete', 'PostController@destroy')->name('post.delete');
 
-    Route::get('/admin/users', 'UserController@index');
+    Route::get('/admin/users', 'UserController@index')->name('users.show');
     Route::get('/admin/users/add', 'UserController@create')->name('user.add');
     Route::post('/admin/users/add', 'UserController@store')->name('user.store');
     Route::get('/admin/users/{id}/edit', 'UserController@edit')->name('user.edit');
