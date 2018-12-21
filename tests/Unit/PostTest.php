@@ -31,6 +31,7 @@ class PostTest extends TestCase
     /** @test */
     public function test_can_show_post()
     {
+        return;
     }
 
     /** @test */
@@ -46,6 +47,7 @@ class PostTest extends TestCase
         ];
 
         $response = $this->patch(route('post.update', $post->id), $data);
+
         $response->assertStatus(302);
     }
 

@@ -19,12 +19,13 @@ class LogRegisteredUser
     }
 
     /**
-     * Handle the event.
+     * Log the user login event to the error log.
      *
-     * @param  OrderShipped  $event
+     * @param $event
+     *
      * @return void
      */
-    public function handle($event)
+    public function handle($event) : void
     {
         // Access the order using $event->order...
         error_log('LogRegisteredUser ' . json_encode($event));

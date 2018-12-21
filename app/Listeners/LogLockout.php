@@ -19,10 +19,7 @@ class LogLockout
     }
 
     /**
-     * Handle the event.
-     *
-     * @param  OrderShipped  $event
-     * @return void
+     * @param $event
      */
     public function handle($event)
     {

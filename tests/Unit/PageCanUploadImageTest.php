@@ -19,6 +19,9 @@ class PageCanUploadImageTest extends TestCase
             'the_content' => json_encode('testing'),
         ]);
 
-        $response = $page::saveImage('test', 'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/01/16/10/emperor-penguin.jpg');
+        $response = $page::saveImage(
+            'test',
+            'https://static.independent.co.uk/s3fs-public/thumbnails/image/2018/01/16/10/emperor-penguin.jpg'
+        );
     }
 }

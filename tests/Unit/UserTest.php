@@ -29,7 +29,7 @@ class UserTest extends TestCase
     {
         $response = $this->get(route('users.show'));
 
-        $response->assertStatus(200);
+        $response->assertStatus(302);
     }
 
     public function test_update_user()
