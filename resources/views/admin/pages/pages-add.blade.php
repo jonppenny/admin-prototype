@@ -36,7 +36,11 @@
                     <label for="the_content" class="control-label">Content</label>
                     <textarea name="the_content" id="the_content" class="form-control" rows="5"></textarea>
                 </div>
-                @ckeditor('the_content')
+                {{--@ckeditor('the_content')--}}
+                <script src="{{asset('vendor/ckeditor/ckeditor.js')}}"></script>
+                <script>
+                  CKEDITOR.replace( 'the_content' );
+                </script>
             </div>
             <div class="col-sm-12 col-md-4">
                 <div class="form-group">

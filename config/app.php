@@ -183,7 +183,9 @@ return [
 
         Intervention\Image\ImageServiceProvider::class,
 
-        JeroenNoten\LaravelCkEditor\ServiceProvider::class,
+        //JeroenNoten\LaravelCkEditor\ServiceProvider::class,
+
+        Unisharp\Ckeditor\ServiceProvider::class,
 
     ],
 
