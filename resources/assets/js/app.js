@@ -11,8 +11,6 @@ require('./lib/jquery.bxslider.min');
 
 require('./page-bxslider-settings');
 
-require('./page-videocanvas');
-
 window.Vue = require('vue');
 
 // Vue.component('videoCanvas', require('./components/VideoCanvas.vue'));

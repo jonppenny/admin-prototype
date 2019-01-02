@@ -1,16 +1,12 @@
-/**
- * Created by nigel.britton on 10/07/2017.
- */
-
-$(document).ready(function(){
-    $('.bxslider').bxSlider({
-        minSlides: 3,
-        maxSlides: 3,
-        slideWidth: 420,
-        slideMargin: 10,
-        pager: false,
-        onSliderLoad: function() {
-            $('.bxslider').removeClass('loading');
-        }
-    });
+jQuery(document).ready(function ($) {
+  $('.bxslider').bxSlider({
+    minSlides: 3,
+    maxSlides: 3,
+    slideWidth: 420,
+    slideMargin: 10,
+    pager: false,
+    onSliderLoad: function () {
+      $('.bxslider').removeClass('loading');
+    }
+  });
 });
