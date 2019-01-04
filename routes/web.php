@@ -56,5 +56,8 @@ Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
 Route::get('/2fa/validate', 'Auth\LoginController@getValidateToken');
 Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\LoginController@postValidateToken',]);
 
+Route::get('/install', 'InstallController@index');
+Route::post('/install', 'InstallController@store');
+
 // This must be last in the list
 Route::get('/{slug}', 'UrlController@showPage');

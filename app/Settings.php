@@ -7,6 +7,7 @@ use Illuminate\Database\Eloquent\Model;
 class Settings extends Model
 {
     protected $fillable = [
-        'settings',
+        'install_run',
+        'website_name',
     ];
 }

@@ -3,7 +3,11 @@
 namespace App\Http\Controllers;
 
 use App\Install;
+use App\Settings;
+use App\User;
 use Illuminate\Http\Request;
+use function redirect;
+use function view;
 
 class InstallController extends Controller
 {
@@ -14,7 +18,7 @@ class InstallController extends Controller
      */
     public function index()
     {
-        //
+        return view('install.index');
     }
 
     /**
@@ -28,20 +32,33 @@ class InstallController extends Controller
     }
 
     /**
-     * Store a newly created resource in storage.
+     * @param Request $request
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Http\RedirectResponse
      */
     public function store(Request $request)
     {
-        //
+        Settings::create([
+            'install_run'  => 1,
+            'website_name' => $request->website_name
+        ]);
+
+        User::create([
+            'name'        => $request->admin_username,
+            'email'       => $request->email,
+            'password'    => bcrypt($request->password),
+            'role'        => ($request->role) ? $request->role : 'admin',
+            'user_avatar' => "",
+        ]);
+
+        return redirect()->to('/login');
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Install  $install
+     * @param  \App\Install $install
+     *
      * @return \Illuminate\Http\Response
      */
     public function show(Install $install)
@@ -52,7 +69,8 @@ class InstallController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Install  $install
+     * @param  \App\Install $install
+     *
      * @return \Illuminate\Http\Response
      */
     public function edit(Install $install)
@@ -63,8 +81,9 @@ class InstallController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Install  $install
+     * @param  \Illuminate\Http\Request $request
+     * @param  \App\Install             $install
+     *
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, Install $install)
@@ -75,7 +94,8 @@ class InstallController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Install  $install
+     * @param  \App\Install $install
+     *
      * @return \Illuminate\Http\Response
      */
     public function destroy(Install $install)
