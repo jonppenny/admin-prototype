@@ -11,9 +11,8 @@
 |
 */
 
-Auth::routes();
 
-Route::middleware(['role'])->group(function () {
+Route::middleware(['install', 'role'])->group(function () {
     Route::get('/admin', 'DashboardController@index');
 
     Route::get('/admin/posts', 'PostController@index');
@@ -48,13 +47,20 @@ Route::middleware(['role'])->group(function () {
     Route::delete('/admin/menus/{id}/delete', 'MenuController@destroy');
 });
 
-Route::get('/', 'HomeController@index');
-Route::get('/myprofile', 'UserController@show');
-Route::get('/post/{slug}', 'UrlController@showPost');
-Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
-Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
-Route::get('/2fa/validate', 'Auth\LoginController@getValidateToken');
-Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\LoginController@postValidateToken',]);
+Route::middleware(['install'])->group(function () {
+    Auth::routes();
+
+    Route::get('/', 'HomeController@index');
+
+    Route::get('/myprofile', 'UserController@show');
+    Route::get('/post/{slug}', 'UrlController@showPost');
+    Route::get('/2fa/enable', 'Google2FAController@enableTwoFactor');
+    Route::get('/2fa/disable', 'Google2FAController@disableTwoFactor');
+    Route::get('/2fa/validate', 'Auth\LoginController@getValidateToken');
+    Route::post('/2fa/validate', ['middleware' => 'throttle:5', 'uses' => 'Auth\LoginController@postValidateToken',]);
+
+
+});
 
 Route::get('/install', 'InstallController@index');
 Route::post('/install', 'InstallController@store');
