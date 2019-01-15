@@ -92,7 +92,14 @@ class UserController extends Controller
 
         return view(
             'site.pages.my-profile',
-            compact('id', 'name', 'email', 'user_avatar', 'role', 'google2fa_secret')
+            compact(
+                'id',
+                'name',
+                'email',
+                'user_avatar',
+                'role',
+                'google2fa_secret'
+            )
         );
     }
 
@@ -114,7 +121,14 @@ class UserController extends Controller
 
         return view(
             'admin.pages.users-edit',
-            compact('id', 'name', 'email', 'user_avatar', 'role', 'google2fa_secret')
+            compact(
+                'id',
+                'name',
+                'email',
+                'user_avatar',
+                'role',
+                'google2fa_secret'
+            )
         );
     }
 

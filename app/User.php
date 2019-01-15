@@ -3,7 +3,7 @@
  * User model
  *
  * @since  0.1.0
- * @author Jon Penny <jon@completecontrolc.o.uk>
+ * @author Jon Penny <jon@jonppenny.co.uk>
  */
 
 namespace App;

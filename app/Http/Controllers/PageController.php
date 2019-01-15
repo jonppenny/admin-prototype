@@ -1,4 +1,5 @@
 <?php
+
 namespace App\Http\Controllers;
 
 use App\Page;
@@ -70,9 +71,7 @@ class PageController extends Controller
 
         $title       = $page['title'];
         $the_content = json_decode($page['the_content']);
-        $template    = ($page['template'])
-            ? $page['template']
-            : 'default';
+        $template    = ($page['template']) ? $page['template'] : 'default';
 
         return view('site.pages.' . $template, compact('title', 'the_content'));
     }

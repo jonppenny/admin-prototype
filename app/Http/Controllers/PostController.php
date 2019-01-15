@@ -103,8 +103,15 @@ class PostController extends Controller
 
         return view(
             'admin.pages.posts-edit',
-            compact('id', 'title', 'the_content', 'created_at', 'updated_at',
-                'slug', 'preview_image')
+            compact(
+                'id',
+                'title',
+                'the_content',
+                'created_at',
+                'updated_at',
+                'slug',
+                'preview_image'
+            )
         );
     }
 

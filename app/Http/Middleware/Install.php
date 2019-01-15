@@ -4,9 +4,12 @@ namespace App\Http\Middleware;
 
 use App\Settings;
 use Closure;
+use Schema;
 
 class Install
 {
+    private $settings;
+
     /**
      * Handle an incoming request.
      *
@@ -17,12 +20,13 @@ class Install
      */
     public function handle($request, Closure $next)
     {
-        $settings = Settings::find(1);
 
-        if (!$settings) {
+        if (!Schema::hasTable('settings')) {
             return redirect('/install');
         } else {
-            $s = $settings->install_run;
+            $this->settings = Settings::find(1);
+
+            $s = $this->settings->install_run;
 
             if (empty($s) || $s !== 1) {
                 return redirect('/install');

@@ -16,10 +16,11 @@ use Illuminate\Http\Request;
 
 /*Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
-});
+});*/
 
 Route::get('/users', 'ApiController@getUsers');
 Route::get('/user/{id}', 'ApiController@getUserByID');
-Route::delete('/user/{id}/delete', function () {
+
+/*Route::delete('/user/{id}/delete', function () {
     return json_encode(["status" => "success"]);
 });*/
