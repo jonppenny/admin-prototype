@@ -30,7 +30,7 @@ if (!function_exists('set_selected')) {
 if (!function_exists('set_active')) {
     /**
      * Helper function to set the menu item to active if the $path parameter matched to the current URL.
-     * Wildcard paths are allowed using the asterix character.
+     * Wildcard paths are allowed using the asterisk character.
      *
      * @param string $path   The Path to match to
      * @param string $active (optional) The call to add to the item if the URL and path parameter match
