@@ -108,6 +108,7 @@ if (!function_exists('display_menu')) {
 
         if ($pages) {
             printf('<ul class="%s">', $class);
+
             foreach ($pages as $page) {
                 printf(
                     '<li class="%s"><a href="%s">%s</a></li>',
@@ -116,6 +117,7 @@ if (!function_exists('display_menu')) {
                     $page->title
                 );
             }
+
             printf('</ul>');
         }
     }

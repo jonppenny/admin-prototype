@@ -8,7 +8,7 @@
     <!-- CSRF Token -->
     <meta name="csrf-token" content="{{ csrf_token() }}">
 
-    <title>{{ config('app.name', 'Style Guide Prototype') }}</title>
+    <title>{{ config('app.name', '') }}</title>
 
     <link rel="icon" href="/favicon.ico" type="image/x-icon"/>
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400" rel="stylesheet">

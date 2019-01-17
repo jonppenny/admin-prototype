@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use Artisan;
 use App\Install;
 use App\Settings;
 use App\User;
@@ -12,12 +13,12 @@ use function view;
 class InstallController extends Controller
 {
     /**
-     * Display a listing of the resource.
-     *
-     * @return \Illuminate\Http\Response
+     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
      */
     public function index()
     {
+        Artisan::call('migrate', array('--path' => 'app/migrations', '--force' => true));
+
         return view('install.index');
     }
 

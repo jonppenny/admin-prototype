@@ -20,15 +20,14 @@ class Install
      */
     public function handle($request, Closure $next)
     {
-
         if (!Schema::hasTable('settings')) {
             return redirect('/install');
         } else {
             $this->settings = Settings::find(1);
 
-            $s = $this->settings->install_run;
+            $installed = $this->settings->install_run;
 
-            if (empty($s) || $s !== 1) {
+            if (empty($installed) || $installed !== 1) {
                 return redirect('/install');
             }
         }

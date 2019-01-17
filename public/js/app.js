@@ -32010,10 +32010,6 @@ module.exports = function spread(callback) {
 /* 36 */
 /***/ (function(module, exports) {
 
-/**
- * Created by nigel.britton on 10/07/2017.
- */
-
 $(document).ready(function () {
     $('.bxslider').bxSlider({
         minSlides: 3,
@@ -32030,10 +32026,6 @@ $(document).ready(function () {
 /***/ }),
 /* 37 */
 /***/ (function(module, exports) {
-
-/**
- * Created by nigel.britton on 21/07/2017.
- */
 
 var ScreenManager = {
     height: 1080,
