@@ -3,6 +3,9 @@
 namespace App\Http\Controllers;
 
 use App\User;
+
+use Exception;
+
 use function json_encode;
 use function response;
 
@@ -40,7 +43,7 @@ class ApiController extends Controller
      * @param $id
      *
      * @return mixed
-     * @throws \Exception
+     * @throws Exception
      */
     public function deleteUserByID($id)
     {

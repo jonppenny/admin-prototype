@@ -2,11 +2,14 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Support\Facades\DB;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
+use Illuminate\Http\Response;
 use Illuminate\Http\Request;
 use App\User;
-use Google2FA;
 use Auth;
+use Illuminate\View\View;
 
 class UserController extends Controller
 {
@@ -23,7 +26,7 @@ class UserController extends Controller
      * The Admin dashboard page.
      * TODO display any required info here
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function index()
     {
@@ -35,7 +38,7 @@ class UserController extends Controller
     /**
      * Add A user
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function create()
     {
@@ -45,11 +48,11 @@ class UserController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $image_name = '';
 
@@ -75,11 +78,11 @@ class UserController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function show()
+    public function show(): view
     {
         $user = User::find(Auth::user()->id);
 
@@ -106,7 +109,7 @@ class UserController extends Controller
     /**
      * @param int $id
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
     public function edit(int $id)
     {
@@ -137,12 +140,12 @@ class UserController extends Controller
      * jonfix: Why has this broken? Need to fix
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param  int                      $id
+     * @param Request $request
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         $user = User::find($id);
 
@@ -182,9 +185,9 @@ class UserController extends Controller
     /**
      * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function destroy($id)
+    public function destroy(int $id): RedirectResponse
     {
         $user = User::find($id);
         $user->delete();

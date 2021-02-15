@@ -4,7 +4,12 @@ namespace App\Http\Controllers;
 
 use App\Menu;
 use App\Page;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class MenuController extends Controller
 {
@@ -20,9 +25,9 @@ class MenuController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function index()
+    public function index(): view
     {
         $menus = Menu::paginate(20);
 
@@ -32,9 +37,9 @@ class MenuController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function create()
+    public function create(): view
     {
         $pages = Page::all();
 
@@ -44,11 +49,11 @@ class MenuController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         Menu::create([
             'name'     => ($request->name) ? $request->name : '',
@@ -61,9 +66,9 @@ class MenuController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param int        $id   Menu ID
-     * @param string     $name Menu name
-     * @param  \App\Menu $menu
+     * @param int $id Menu ID
+     * @param string $name Menu name
+     * @param Menu $menu
      *
      * @return void
      */
@@ -75,17 +80,19 @@ class MenuController extends Controller
 
         if (isset($id) && $id > 0) {
             $menu = Menu::find($id);
-        } else if (isset($name)) {
-            $menu = Menu::find($name);
+        } else {
+            if (isset($name)) {
+                $menu = Menu::find($name);
+            }
         }
     }
 
     /**
      * @param int $id
      *
-     * @return \Illuminate\Contracts\View\Factory|\Illuminate\View\View
+     * @return Factory|View
      */
-    public function edit(int $id)
+    public function edit(int $id): view
     {
         $menu = Menu::find($id);
 
@@ -104,14 +111,14 @@ class MenuController extends Controller
     /**
      * Update the specified resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
-     * @param int                       $id
+     * @param Request $request
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      * @internal param Menu $menu
      *
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         //dd($request);
 
@@ -133,11 +140,11 @@ class MenuController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  int $id
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         $menu = Menu::find($id);
 

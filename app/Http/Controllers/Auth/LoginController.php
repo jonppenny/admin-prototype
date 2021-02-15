@@ -4,10 +4,15 @@ namespace App\Http\Controllers\Auth;
 
 use Cache;
 use App\Http\Controllers\Controller;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
 use Illuminate\Foundation\Auth\AuthenticatesUsers;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use Auth;
 use App\Http\Requests\ValidateSecretRequest;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 
 class LoginController extends Controller
@@ -28,7 +33,7 @@ class LoginController extends Controller
     /**
      * @param Request $request
      * @param         $user
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
     protected function authenticated(Request $request, $user)
     {
@@ -49,7 +54,7 @@ class LoginController extends Controller
 
     /**
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
     public function getValidateToken()
     {
@@ -61,11 +66,11 @@ class LoginController extends Controller
     }
 
     /**
-     * @param \App\Http\Requests\ValidateSecretRequest $request
+     * @param ValidateSecretRequest $request
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function postValidateToken(ValidateSecretRequest $request)
+    public function postValidateToken(ValidateSecretRequest $request): RedirectResponse
     {
         $userId = $request->session()->pull('2fa:user:id');
         $key    = $userId . ':' . $request->totp;

@@ -3,7 +3,12 @@
 namespace App\Http\Controllers;
 
 use App\Page;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class PageController extends Controller
 {
@@ -18,9 +23,9 @@ class PageController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function index()
+    public function index(): view
     {
         $pages = Page::paginate(20);
 
@@ -30,9 +35,9 @@ class PageController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function create()
+    public function create(): view
     {
         $templates = get_files(resource_path('views/site/pages'));
 
@@ -42,11 +47,11 @@ class PageController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         Page::create([
             'title'       => $request->title,
@@ -61,11 +66,11 @@ class PageController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string $slug The slug (URL) of the page
+     * @param string $slug The slug (URL) of the page
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function show(string $slug)
+    public function show(string $slug): view
     {
         $page = Page::where('slug', $slug)->firstOrFail()->getAttributes();
 
@@ -81,11 +86,11 @@ class PageController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      * @internal param Page $page
      *
      */
-    public function edit(int $id)
+    public function edit(int $id): view
     {
         $page = Page::find($id);
 
@@ -111,12 +116,12 @@ class PageController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         $page = Page::find($id);
 
@@ -135,11 +140,11 @@ class PageController extends Controller
      *
      * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      * @internal param Page $page
      *
      */
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         $page = Page::find($id);
 

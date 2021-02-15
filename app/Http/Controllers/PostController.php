@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\RedirectResponse;
 use Illuminate\Http\Request;
 use App\Post;
-use Intervention\Image\ImageManagerStatic as Image;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 
 class PostController extends Controller
 {
@@ -19,9 +24,9 @@ class PostController extends Controller
     /**
      * Display a listing of the resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function index()
+    public function index(): view
     {
         $posts = Post::paginate(20);
 
@@ -31,9 +36,9 @@ class PostController extends Controller
     /**
      * Show the form for creating a new resource.
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function create()
+    public function create(): view
     {
         return view('admin.pages.posts-add');
     }
@@ -41,11 +46,11 @@ class PostController extends Controller
     /**
      * Store a newly created resource in storage.
      *
-     * @param  \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return RedirectResponse
      */
-    public function store(Request $request)
+    public function store(Request $request): RedirectResponse
     {
         $image_name = 'default.png';
 
@@ -72,11 +77,11 @@ class PostController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  string $slug
+     * @param string $slug
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function show(string $slug)
+    public function show(string $slug): view
     {
         $post = Post::where('slug', $slug)->first();
 
@@ -86,11 +91,11 @@ class PostController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int $id
+     * @param int $id
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function edit(int $id)
+    public function edit(int $id): view
     {
         $post          = Post::find($id);
         $id            = $post->id;
@@ -116,12 +121,12 @@ class PostController extends Controller
     }
 
     /**
-     * @param \Illuminate\Http\Request $request
-     * @param int                      $id
+     * @param Request $request
+     * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
+     * @return RedirectResponse
      */
-    public function update(Request $request, int $id)
+    public function update(Request $request, int $id): RedirectResponse
     {
         $post        = Post::find($id);
         $post->title = $request->title;
@@ -135,10 +140,10 @@ class PostController extends Controller
     /**
      * @param int $id
      *
-     * @return \Illuminate\Http\RedirectResponse
-     * @throws \Exception
+     * @return RedirectResponse
+     * @throws Exception
      */
-    public function destroy(int $id)
+    public function destroy(int $id): RedirectResponse
     {
         $post = Post::find($id);
         $post->delete();

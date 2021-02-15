@@ -8,9 +8,13 @@
 namespace App\Http\Controllers;
 
 use Crypt;
+use Exception;
+use Illuminate\Contracts\View\Factory;
+use Illuminate\Foundation\Application;
+use Illuminate\Http\Response;
+use Illuminate\View\View;
 use PragmaRX\Google2FA\Google2FA;
 use Illuminate\Http\Request;
-use App\Http\Controllers\Controller;
 use Illuminate\Foundation\Validation\ValidatesRequests;
 use ParagonIE\ConstantTime\Base32;
 
@@ -30,11 +34,12 @@ class Google2FAController extends Controller
 
     /**
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
+     * @throws Exception
      */
-    public function enableTwoFactor(Request $request)
+    public function enableTwoFactor(Request $request): view
     {
         $user             = $request->user();
         $google2fa_secret = $user->google2fa_secret;
@@ -59,11 +64,10 @@ class Google2FAController extends Controller
         }
 
         //generate image for QR barcode
-        $imageDataUri = Google2FA::getQRCodeInline(
+        $imageDataUri = (new Google2FA)->getQRCodeInline(
             $request->getHttpHost(),
             $user->email,
-            $secret,
-            200
+            $secret
         );
 
         return view('2fa/enableTwoFactor', [
@@ -76,11 +80,11 @@ class Google2FAController extends Controller
 
     /**
      *
-     * @param \Illuminate\Http\Request $request
+     * @param Request $request
      *
-     * @return \Illuminate\Http\Response
+     * @return Factory|Application|Response|View
      */
-    public function disableTwoFactor(Request $request)
+    public function disableTwoFactor(Request $request): View
     {
         $user = $request->user();
 
@@ -98,8 +102,9 @@ class Google2FAController extends Controller
      * @param int $length The length of the random string that should be returned in bytes.
      *
      * @return string
+     * @throws Exception
      */
-    private function generateSecret(int $length)
+    private function generateSecret(int $length): string
     {
         $randomBytes = random_bytes($length);
 
@@ -113,8 +118,9 @@ class Google2FAController extends Controller
      * @param int $max Maximum number
      *
      * @return string
+     * @throws Exception
      */
-    private function generateRecoveryCode(int $min, int $max)
+    private function generateRecoveryCode(int $min, int $max): string
     {
         return random_int($min, $max);
     }
